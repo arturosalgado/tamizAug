@@ -585,7 +585,7 @@
 			<!-- MAIN CONTENT -->
 			<div id="content">
 
-                            {content}
+                            {main_content}
                             
 			</div>
 			<!-- END MAIN CONTENT -->

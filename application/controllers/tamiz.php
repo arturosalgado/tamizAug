@@ -9,6 +9,8 @@ class tamiz extends MY_Controller{
     
     function __construct() {
         parent::__construct();
+        
+      
     }
     
     
@@ -52,7 +54,7 @@ class tamiz extends MY_Controller{
                
            $all = $t->all;
            $this->data['all']=$all;
-           return  $this->load->view("admin/tamiz/list_view",  $this->data,true);  
+           return  $this->load->view("{$this->theme}/tamiz/list_view",  $this->data,true);  
         
        } 
         
