@@ -27,7 +27,7 @@ class MY_Controller extends CI_Controller
         
         
         $this->data['main_content']= $this->Content();
-        $this->data['theme']= "/themes/{$this->theme}/";
+        $this->data['theme']= "themes/{$this->theme}/";
         return $this->parser->parse("{$this->theme}/layout",$this->data);
         
     }
