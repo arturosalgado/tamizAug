@@ -109,7 +109,7 @@
                                                 <?php foreach ($all as $row):?>
                                                 <tr>
                                                 <td><?php echo $row->apellido_paterno ." ".$row->apellido_materno." ".$row->nombre ?></td>
-                                                <td>System Architect</td>
+                                                <td><?php echo $row->folio;?></td>
                                                 <td>Edinburgh</td>
                                                 <td>61</td>
                                                 <td>2014/12/12</td>
