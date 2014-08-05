@@ -1,0 +1,133 @@
+[04-Jul-2014 13:42:25 America/Chicago] PHP Fatal error:  Call to a member function myqueryfunction() on a non-object in /home/sintesys/public_html/tamiz/application/controllers/reports.php on line 91
+[04-Jul-2014 13:42:44 America/Chicago] PHP Fatal error:  Call to a member function myqueryfunction() on a non-object in /home/sintesys/public_html/tamiz/application/controllers/reports.php on line 91
+[04-Jul-2014 13:42:52 America/Chicago] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to call the method "myqueryfunction" on the class TamizModel' in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php:1188
+Stack trace:
+#0 /home/sintesys/public_html/tamiz/application/controllers/reports.php(91): DataMapper->__call('myqueryfunction', Array)
+#1 /home/sintesys/public_html/tamiz/application/controllers/reports.php(91): TamizModel->myqueryfunction()
+#2 [internal function]: reports->test()
+#3 /home/sintesys/public_html/tamiz/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#4 /home/sintesys/public_html/tamiz/index.php(204): require_once('/home/sintesys/...')
+#5 {main}
+  thrown in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php on line 1188
+[04-Jul-2014 13:47:35 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/sintesys/public_html/tamiz/application/libraries/export.php on line 18
+[04-Jul-2014 13:48:10 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/sintesys/public_html/tamiz/application/libraries/export.php on line 18
+[04-Jul-2014 13:48:13 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/sintesys/public_html/tamiz/application/libraries/export.php on line 18
+[04-Jul-2014 23:11:06 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/sintesys/public_html/tamiz/application/views/admin/reports/state.php on line 134
+[05-Jul-2014 08:48:01 America/Chicago] PHP Fatal error:  Call to a member function searchFormAction() on a non-object in /home/sintesys/public_html/tamiz/application/views/admin/tamiz/list_view.php on line 116
+[05-Jul-2014 09:15:58 America/Chicago] PHP Fatal error:  Call to a member function searchFormAction() on a non-object in /home/sintesys/public_html/tamiz/application/views/admin/lab/tamiz/list_view.php on line 116
+[05-Jul-2014 15:40:06 America/Chicago] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to call the method "toJsonNameList" on the class TamizModel' in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php:1188
+Stack trace:
+#0 /home/sintesys/public_html/tamiz/application/views/admin/tamiz/form.php(74): DataMapper->__call('toJsonNameList', Array)
+#1 /home/sintesys/public_html/tamiz/application/views/admin/tamiz/form.php(74): TamizModel->toJsonNameList()
+#2 /home/sintesys/public_html/tamiz/system/core/Loader.php(833): include('/home/sintesys/...')
+#3 /home/sintesys/public_html/tamiz/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#4 /home/sintesys/public_html/tamiz/application/controllers/tamiz.php(26): CI_Loader->view('admin/tamiz/for...', Array, true)
+#5 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(28): tamiz->Content()
+#6 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(38): MY_Controller->load_page()
+#7 /home/sintesys/public_html/tamiz/application/controllers/tamiz.php(63): MY_ in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php on line 1188
+[05-Jul-2014 15:40:16 America/Chicago] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to call the method "toJsonNameList" on the class TamizModel' in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php:1188
+Stack trace:
+#0 /home/sintesys/public_html/tamiz/application/views/admin/tamiz/form.php(74): DataMapper->__call('toJsonNameList', Array)
+#1 /home/sintesys/public_html/tamiz/application/views/admin/tamiz/form.php(74): TamizModel->toJsonNameList()
+#2 /home/sintesys/public_html/tamiz/system/core/Loader.php(833): include('/home/sintesys/...')
+#3 /home/sintesys/public_html/tamiz/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#4 /home/sintesys/public_html/tamiz/application/controllers/tamiz.php(26): CI_Loader->view('admin/tamiz/for...', Array, true)
+#5 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(28): tamiz->Content()
+#6 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(38): MY_Controller->load_page()
+#7 /home/sintesys/public_html/tamiz/application/controllers/tamiz.php(63): MY_ in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php on line 1188
+[05-Jul-2014 15:40:18 America/Chicago] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to call the method "toJsonNameList" on the class TamizModel' in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php:1188
+Stack trace:
+#0 /home/sintesys/public_html/tamiz/application/views/admin/tamiz/form.php(74): DataMapper->__call('toJsonNameList', Array)
+#1 /home/sintesys/public_html/tamiz/application/views/admin/tamiz/form.php(74): TamizModel->toJsonNameList()
+#2 /home/sintesys/public_html/tamiz/system/core/Loader.php(833): include('/home/sintesys/...')
+#3 /home/sintesys/public_html/tamiz/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#4 /home/sintesys/public_html/tamiz/application/controllers/tamiz.php(26): CI_Loader->view('admin/tamiz/for...', Array, true)
+#5 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(28): tamiz->Content()
+#6 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(38): MY_Controller->load_page()
+#7 /home/sintesys/public_html/tamiz/application/controllers/tamiz.php(63): MY_ in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php on line 1188
+[05-Jul-2014 15:40:23 America/Chicago] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to call the method "toJsonNameList" on the class TamizModel' in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php:1188
+Stack trace:
+#0 /home/sintesys/public_html/tamiz/application/views/admin/tamiz/form.php(74): DataMapper->__call('toJsonNameList', Array)
+#1 /home/sintesys/public_html/tamiz/application/views/admin/tamiz/form.php(74): TamizModel->toJsonNameList()
+#2 /home/sintesys/public_html/tamiz/system/core/Loader.php(833): include('/home/sintesys/...')
+#3 /home/sintesys/public_html/tamiz/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#4 /home/sintesys/public_html/tamiz/application/controllers/tamiz.php(26): CI_Loader->view('admin/tamiz/for...', Array, true)
+#5 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(28): tamiz->Content()
+#6 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(38): MY_Controller->load_page()
+#7 /home/sintesys/public_html/tamiz/application/controllers/tamiz.php(63): MY_ in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php on line 1188
+[05-Jul-2014 15:40:36 America/Chicago] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to call the method "toJsonNameList" on the class TamizModel' in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php:1188
+Stack trace:
+#0 /home/sintesys/public_html/tamiz/application/views/admin/tamiz/form.php(74): DataMapper->__call('toJsonNameList', Array)
+#1 /home/sintesys/public_html/tamiz/application/views/admin/tamiz/form.php(74): TamizModel->toJsonNameList()
+#2 /home/sintesys/public_html/tamiz/system/core/Loader.php(833): include('/home/sintesys/...')
+#3 /home/sintesys/public_html/tamiz/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#4 /home/sintesys/public_html/tamiz/application/controllers/tamiz.php(26): CI_Loader->view('admin/tamiz/for...', Array, true)
+#5 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(28): tamiz->Content()
+#6 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(38): MY_Controller->load_page()
+#7 /home/sintesys/public_html/tamiz/application/controllers/tamiz.php(63): MY_ in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php on line 1188
+[05-Jul-2014 15:40:39 America/Chicago] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to call the method "toJsonNameList" on the class TamizModel' in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php:1188
+Stack trace:
+#0 /home/sintesys/public_html/tamiz/application/views/admin/tamiz/form.php(74): DataMapper->__call('toJsonNameList', Array)
+#1 /home/sintesys/public_html/tamiz/application/views/admin/tamiz/form.php(74): TamizModel->toJsonNameList()
+#2 /home/sintesys/public_html/tamiz/system/core/Loader.php(833): include('/home/sintesys/...')
+#3 /home/sintesys/public_html/tamiz/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#4 /home/sintesys/public_html/tamiz/application/controllers/tamiz.php(26): CI_Loader->view('admin/tamiz/for...', Array, true)
+#5 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(28): tamiz->Content()
+#6 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(38): MY_Controller->load_page()
+#7 /home/sintesys/public_html/tamiz/application/controllers/tamiz.php(63): MY_ in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php on line 1188
+[12-Jul-2014 18:15:18 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/sintesys/public_html/tamiz/application/views/admin/lab/tamiz/list_view.php on line 188
+[12-Jul-2014 18:16:33 America/Chicago] PHP Fatal error:  Class 'estado' not found in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php on line 1072
+[12-Jul-2014 18:17:10 America/Chicago] PHP Fatal error:  Class 'estado' not found in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php on line 1072
+[12-Jul-2014 18:17:21 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/sintesys/public_html/tamiz/application/views/admin/lab/tamiz/list_view.php on line 188
+[12-Jul-2014 18:17:38 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/sintesys/public_html/tamiz/application/views/admin/lab/tamiz/list_view.php on line 188
+[12-Jul-2014 18:17:40 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/sintesys/public_html/tamiz/application/views/admin/lab/tamiz/list_view.php on line 188
+[12-Jul-2014 18:17:42 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/sintesys/public_html/tamiz/application/views/admin/lab/tamiz/list_view.php on line 188
+[12-Jul-2014 18:17:46 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/sintesys/public_html/tamiz/application/views/admin/lab/tamiz/list_view.php on line 188
+[12-Jul-2014 20:53:54 America/Chicago] PHP Fatal error:  Call to undefined method estados::Content() in /home/sintesys/public_html/tamiz/application/core/MY_Controller.php on line 28
+[12-Jul-2014 21:04:14 America/Chicago] PHP Fatal error:  Call to a member function formAction() on a non-object in /home/sintesys/public_html/tamiz/application/views/admin/states/edit.php on line 59
+[12-Jul-2014 21:05:00 America/Chicago] PHP Fatal error:  Call to a member function formAction() on a non-object in /home/sintesys/public_html/tamiz/application/views/admin/states/edit.php on line 59
+[12-Jul-2014 21:26:05 America/Chicago] PHP Parse error:  syntax error, unexpected '}', expecting T_STRING in /home/sintesys/public_html/tamiz/application/models/unitmodel.php on line 114
+[12-Jul-2014 21:29:07 America/Chicago] PHP Parse error:  syntax error, unexpected '}', expecting T_STRING in /home/sintesys/public_html/tamiz/application/models/unitmodel.php on line 114
+[13-Jul-2014 15:53:41 America/Chicago] PHP Fatal error:  Call to a member function toOptions() on a non-object in /home/sintesys/public_html/tamiz/application/views/admin/reports/state.php on line 116
+[13-Jul-2014 15:53:45 America/Chicago] PHP Fatal error:  Call to a member function toOptions() on a non-object in /home/sintesys/public_html/tamiz/application/views/admin/reports/state.php on line 116
+[13-Jul-2014 15:53:52 America/Chicago] PHP Fatal error:  Call to a member function toOptions() on a non-object in /home/sintesys/public_html/tamiz/application/views/admin/reports/state.php on line 116
+[13-Jul-2014 15:54:44 America/Chicago] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to call the method "toOptions" on the class TamizModel' in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php:1188
+Stack trace:
+#0 /home/sintesys/public_html/tamiz/application/views/admin/reports/state.php(116): DataMapper->__call('toOptions', Array)
+#1 /home/sintesys/public_html/tamiz/application/views/admin/reports/state.php(116): TamizModel->toOptions()
+#2 /home/sintesys/public_html/tamiz/system/core/Loader.php(833): include('/home/sintesys/...')
+#3 /home/sintesys/public_html/tamiz/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#4 /home/sintesys/public_html/tamiz/application/controllers/reports.php(35): CI_Loader->view('admin/reports/s...', Array, true)
+#5 /home/sintesys/public_html/tamiz/application/controllers/reports.php(19): reports->report_state()
+#6 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(28): reports->Content()
+#7 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(38): MY_Cont in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php on line 1188
+[13-Jul-2014 15:56:12 America/Chicago] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to call the method "toOptions" on the class TamizModel' in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php:1188
+Stack trace:
+#0 /home/sintesys/public_html/tamiz/application/views/admin/reports/state.php(117): DataMapper->__call('toOptions', Array)
+#1 /home/sintesys/public_html/tamiz/application/views/admin/reports/state.php(117): TamizModel->toOptions()
+#2 /home/sintesys/public_html/tamiz/system/core/Loader.php(833): include('/home/sintesys/...')
+#3 /home/sintesys/public_html/tamiz/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#4 /home/sintesys/public_html/tamiz/application/controllers/reports.php(37): CI_Loader->view('admin/reports/s...', Array, true)
+#5 /home/sintesys/public_html/tamiz/application/controllers/reports.php(19): reports->report_state()
+#6 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(28): reports->Content()
+#7 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(38): MY_Cont in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php on line 1188
+[13-Jul-2014 15:56:20 America/Chicago] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to call the method "toOptions" on the class TamizModel' in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php:1188
+Stack trace:
+#0 /home/sintesys/public_html/tamiz/application/views/admin/reports/state.php(117): DataMapper->__call('toOptions', Array)
+#1 /home/sintesys/public_html/tamiz/application/views/admin/reports/state.php(117): TamizModel->toOptions()
+#2 /home/sintesys/public_html/tamiz/system/core/Loader.php(833): include('/home/sintesys/...')
+#3 /home/sintesys/public_html/tamiz/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#4 /home/sintesys/public_html/tamiz/application/controllers/reports.php(37): CI_Loader->view('admin/reports/s...', Array, true)
+#5 /home/sintesys/public_html/tamiz/application/controllers/reports.php(19): reports->report_state()
+#6 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(28): reports->Content()
+#7 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(38): MY_Cont in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php on line 1188
+[13-Jul-2014 15:56:29 America/Chicago] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to call the method "toOptions" on the class TamizModel' in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php:1188
+Stack trace:
+#0 /home/sintesys/public_html/tamiz/application/views/admin/reports/state.php(117): DataMapper->__call('toOptions', Array)
+#1 /home/sintesys/public_html/tamiz/application/views/admin/reports/state.php(117): TamizModel->toOptions()
+#2 /home/sintesys/public_html/tamiz/system/core/Loader.php(833): include('/home/sintesys/...')
+#3 /home/sintesys/public_html/tamiz/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#4 /home/sintesys/public_html/tamiz/application/controllers/reports.php(37): CI_Loader->view('admin/reports/s...', Array, true)
+#5 /home/sintesys/public_html/tamiz/application/controllers/reports.php(19): reports->report_state()
+#6 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(28): reports->Content()
+#7 /home/sintesys/public_html/tamiz/application/core/MY_Controller.php(38): MY_Cont in /home/sintesys/public_html/tamiz/application/libraries/datamapper.php on line 1188
