@@ -9,7 +9,8 @@ class MY_Controller extends CI_Controller
     protected $data = array();
     protected $view = 'list';
     protected $id = null;
-            
+           
+    protected $theme = 'admin2';
     function __construct() {
         parent::__construct();
         $c = $this->getControllerName();
@@ -26,8 +27,8 @@ class MY_Controller extends CI_Controller
         
         
         $this->data['main_content']= $this->Content();
-        
-        return $this->parser->parse("admin/layout",$this->data);
+        $this->data['theme']= "/themes/{$this->theme}/";
+        return $this->parser->parse("{$this->theme}/layout",$this->data);
         
     }
     
