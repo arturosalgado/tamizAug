@@ -25,7 +25,7 @@ class tamiz extends MY_Controller{
       // print_r($record);
        
        $this->data['record']=$t;    
-       return  $this->load->view("admin/tamiz/form",  $this->data,true);     
+       return  $this->load->view("{$this->theme}/tamiz/form",  $this->data,true);     
        }
        else
        {    

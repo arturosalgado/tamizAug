@@ -9,9 +9,15 @@
                         </span>
                 </h1>
         </div>
-        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-
-        </div>
+       <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+        <ul id="sparks" class="">
+                <li class="sparks-info">
+                    <a href="<?php echo $record->newLink(); ?>" class="btn btn-default">Crear Nuevo Registro </a>
+                </li>
+               
+        </ul>
+	</div>
+      
 </div>
 
 <!-- widget grid -->
@@ -108,7 +114,10 @@
                                                 <tbody>
                                                 <?php foreach ($all as $row):?>
                                                 <tr>
-                                                <td><?php echo $row->apellido_paterno ." ".$row->apellido_materno." ".$row->nombre ?></td>
+                                                <td><a href="<?php echo $row->editLink() ?>">
+                                                    <?php echo $row->apellido_paterno ." ".$row->apellido_materno." ".$row->nombre ?>
+                                                    </a>
+                                                </td>
                                                 <td><?php echo $row->folio;?></td>
                                                 <td>Edinburgh</td>
                                                 <td>61</td>

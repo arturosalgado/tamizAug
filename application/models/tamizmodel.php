@@ -317,4 +317,19 @@ class TamizModel extends ParentModel
         return json_encode($a);
     }
     
+    
+    function editLink($label = '')
+    {
+        return site_url("tamiz/form/{$this->id}");
+    }
+    
+    
+    function newLink()
+    {
+        
+        return site_url("tamiz/form/");
+        
+    }
+    
+    
 }

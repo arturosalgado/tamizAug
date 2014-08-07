@@ -9,7 +9,7 @@ class ParentModel extends DataMapper{
     }
     
     
-    function editLink()
+    function editLink($label="")
     {
         return "#";
     }
