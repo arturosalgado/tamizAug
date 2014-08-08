@@ -293,7 +293,6 @@
 		<!-- END HEADER -->
 
 		<!-- navigation -->
-                {navigation}
 		<!-- MAIN PANEL -->
                 <div id="main" role="main" style="">
 

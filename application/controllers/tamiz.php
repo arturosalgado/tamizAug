@@ -73,13 +73,27 @@ class tamiz extends MY_Controller{
     
     function pagination()
     {
+        $segment =4; 
         
           $this->load->library('pagination');
 
-            $config['base_url'] = site_url('tamiz/all/offset/');
+            $assoc = $this->uri->uri_to_assoc();
+            echo "<pre>";
+            print_r($assoc);
+            echo "</pre>";
+            unset($assoc['offset']);
+            
+             echo "<pre>";
+            print_r($assoc);
+            echo "</pre>";
+            echo "size:::". count($assoc);
+            echo "</pre>";
+            $url = $this->uri->assoc_to_uri($assoc);
+            echo "[$url]";
+            $config['base_url'] = site_url("tamiz/all/{$url}/offset/");
             $config['total_rows'] = $this->totalRecords;
             $config['per_page'] = $this->limit; 
-            $config['uri_segment'] = 4;
+            $config['uri_segment'] = count($assoc)>0?$segment+2:$segment;
             
             
             
