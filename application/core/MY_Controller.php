@@ -25,7 +25,7 @@ class MY_Controller extends CI_Controller
     function load_page()
     {
         
-        
+        $this->data['navigation']= $this->Navigation();
         $this->data['main_content']= $this->Content();
         $this->data['theme']= base_url()."/themes/{$this->theme}/";
         return $this->parser->parse("{$this->theme}/layout",$this->data);
@@ -59,6 +59,12 @@ class MY_Controller extends CI_Controller
         
     }
     
+    function Navigation()
+    {
+        $data['theme']=  $this->theme;
+        
+        return $this->load->view("{$this->theme}/navigation",$data,true);
+    }
     
     function getControllerName()
     {

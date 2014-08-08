@@ -3,9 +3,9 @@
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
                 <h1 class="page-title txt-color-blueDark">
                         <i class="fa fa-table fa-fw "></i> 
-                                Table 
+                                Tamiz 
                         <span>> 
-                                Data Tables
+                               Listado
                         </span>
                 </h1>
         </div>
@@ -64,7 +64,7 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                                <table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
+                                                <table id="datatable_fixed_column" class="table dataTable table-striped table-bordered" width="100%">
 
                                                 <thead>
                                                                 <tr>
@@ -102,7 +102,7 @@
                                                                         </th>
                                                                 </tr>
                                                     <tr>
-                                                    <th data-class="expand">Name</th>
+                                                        <th class="sorting_desc" data-class="expand"><a href="<?php echo site_url('tamiz/all/')?>">Name</a></th>
                                                     <th>Position</th>
                                                     <th data-hide="phone">Office</th>
                                                     <th data-hide="phone">Age</th>
@@ -110,11 +110,10 @@
                                                     <th data-hide="phone,tablet">Salary</th>
                                                     </tr>
                                                 </thead>
-
                                                 <tbody>
                                                 <?php foreach ($all as $row):?>
                                                 <tr>
-                                                <td><a href="<?php echo $row->editLink() ?>">
+                                                    <td ><a href="<?php echo $row->editLink() ?>">
                                                     <?php echo $row->apellido_paterno ." ".$row->apellido_materno." ".$row->nombre ?>
                                                     </a>
                                                 </td>
@@ -126,9 +125,35 @@
                                                 </tr>
                                                 <?php endforeach;?>
                                                 </tbody>
-
                                                 </table>
-
+                                                <div class="dt-toolbar-footer">
+                                                    <div class="col-sm-6 col-xs-12 hidden-xs">
+                                                      
+                                                    </div>
+                                                            <div class="col-xs-12 col-sm-6">
+                                                                <div class="dataTables_paginate paging_simple_numbers" id="datatable_fixed_column_paginate">
+                                                                    <!--ul class="pagination pagination-sm">
+                                                                        <li class="paginate_button previous disabled" aria-controls="datatable_fixed_column" tabindex="0" id="datatable_fixed_column_previous">
+                                                                            <a href="#">Previous</a>
+                                                                        </li>
+                                                                        <li class="paginate_button active" aria-controls="datatable_fixed_column" tabindex="0">
+                                                                            <a href="#">1</a>
+                                                                        </li>
+                                                                        <li class="paginate_button " aria-controls="datatable_fixed_column" tabindex="0">
+                                                                            <a href="#">2</a>
+                                                                        </li>
+                                                                        <li class="paginate_button next" aria-controls="datatable_fixed_column" tabindex="0" id="datatable_fixed_column_next">
+                                                                            <a href="#">Next</a>
+                                                                        </li>
+                                                                    </ul-->
+                                                                     <ul class="pagination pagination-sm">
+                                                                        <!-- pagination starts --->
+                                                                        <?php echo $pagination ?>
+                                                                        <!-- pagination ends --->
+                                                                     </ul>
+                                                                </div>
+                                                            </div>
+                                                </div>
                                         </div>
                                         <!-- end widget content -->
 

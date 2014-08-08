@@ -1,24 +1,16 @@
 <?php
 
-class tamiz extends MY_Controller{
+class users extends MY_Controller{
     
     // search terms 
     
     private $search_name = '';
     private $search_folio = '';
-    private $offset = 0;
-    private $limit = 20;
-    private $totalRecords = 0;
+    
     function __construct() {
         parent::__construct();
         
-        $segs = $this->uri->segment_array();
-
-        foreach ($this->uri->uri_to_assoc() as $key =>$segment)
-        {
-           $this->$key = $segment;
-         
-        }
+      
     }
     
     
@@ -29,7 +21,9 @@ class tamiz extends MY_Controller{
        $t = new TamizModel($this->id);    
        $t->where('id',  $this->id)->get(1);
       
-      
+       //echo $t->nombre;
+      // print_r($record);
+       
        $this->data['record']=$t;    
        return  $this->load->view("{$this->theme}/tamiz/form",  $this->data,true);     
        }
@@ -48,7 +42,7 @@ class tamiz extends MY_Controller{
             if ($this->search_folio != ''){
              $t->where('folio',  $this->search_folio);   
             }
-            
+           
   
            
             
@@ -56,41 +50,18 @@ class tamiz extends MY_Controller{
             
           //  $t->join
            
-           $t->get($this->limit,$this->offset);    
-           $this->totalRecords=$t->count();
-           
+           $t->get();    
+               
            $all = $t->all;
            $this->data['all']=$all;
-           
-           $this->data['pagination']=$this->pagination();
-
-           
            return  $this->load->view("{$this->theme}/tamiz/list_view",  $this->data,true);  
         
        } 
         
     }
     
-    function pagination()
-    {
-        
-          $this->load->library('pagination');
-
-            $config['base_url'] = site_url('tamiz/all/offset/');
-            $config['total_rows'] = $this->totalRecords;
-            $config['per_page'] = $this->limit; 
-            $config['uri_segment'] = 4;
-            
-            
-            
-            $this->pagination->initialize($config); 
-            
-            return $this->pagination->create_links();  
-        
-    }
     
-    
-            function form($id = null)
+    function form($id = null)
     {
         $this->id = $id;
        // echo $this->id;
@@ -141,24 +112,4 @@ class tamiz extends MY_Controller{
         $this->index();
     }
     
-    function insert()
-    {
-        
-       for($i = 51 ; $i<=5000;$i++)
-       {
-           $u = new TamizModel();
-           $u->apellido_paterno = "$i";
-           $u->apellido_materno = "$i";
-           $u->save();
-       }
-        
-    }
-    
-    function all()
-    {
-       
-        $this->index();
-        
-    }
-
 }
