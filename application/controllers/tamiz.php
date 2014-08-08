@@ -78,19 +78,12 @@ class tamiz extends MY_Controller{
           $this->load->library('pagination');
 
             $assoc = $this->uri->uri_to_assoc();
-            echo "<pre>";
-            print_r($assoc);
-            echo "</pre>";
-            unset($assoc['offset']);
+          
+            unset($assoc['offset']);// so it doesnt append the offset/20/60
             
-             echo "<pre>";
-            print_r($assoc);
-            echo "</pre>";
-            echo "size:::". count($assoc);
-            echo "</pre>";
             $url = $this->uri->assoc_to_uri($assoc);
-            echo "[$url]";
-            $config['base_url'] = site_url("tamiz/all/{$url}/offset/");
+            
+            $config['base_url'] = site_url("tamiz/all/{$url}/offset/");//better always at the end
             $config['total_rows'] = $this->totalRecords;
             $config['per_page'] = $this->limit; 
             $config['uri_segment'] = count($assoc)>0?$segment+2:$segment;
