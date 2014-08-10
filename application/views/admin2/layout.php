@@ -293,6 +293,7 @@
 		<!-- END HEADER -->
 
 		<!-- navigation -->
+                {navigation}
 		<!-- MAIN PANEL -->
                 <div id="main" role="main" style="">
 
@@ -1055,8 +1056,20 @@
                         ////////////
                         
                         
-                        $("#submitForm")
-                        
+                     $("#save-form").click(function(){
+                         //alert('save')
+                         
+                         $("#saveType").attr("value","save");
+                         $('#form').submit();
+                         
+                     });
+                     $("#save-form-list").click(function(){
+                         
+                         //alert('list')
+                         $("#saveType").attr("value","save-list");
+                         $('#form').submit();
+                         
+                     });   
                         
 		
 		})

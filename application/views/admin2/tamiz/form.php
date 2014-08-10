@@ -16,14 +16,14 @@
                     <input type="button" value="Regresar sin Guardar"  />
                 </li>
                 <li class="sparks-info">
-                    <input type="button" value="Guardar"  />
+                    <input type="button" id="save-form" value="Guardar"  />
                     
                 </li>
                 <li class="sparks-info">
                     <input type="button" value="Guardar Y Nuevo"  />
                 </li>
                 <li class="sparks-info">
-                    <input type="button" value="Guardar e ir al Listado"  />
+                    <input type="button" id="save-form-list" value="Guardar e ir al Listado"  />
                 </li>
         </ul>
 	</div>
@@ -75,7 +75,9 @@
                                         <div class="widget-body no-padding">
 
     <form id="form" class="smart-form" method="post" action="<?php echo site_url('/tamiz/update').'/'.$record->id; ?>">
-     <fieldset>                                                
+     <fieldset>  
+         <input name="saveType" id="saveType"  > 
+    
     <div class="row">
                 <section class="col col-3">
                         Unidad donde se toma la muestra

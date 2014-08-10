@@ -70,10 +70,10 @@ class tamiz extends MY_Controller{
        } 
         
     }
-    
+    /*combina la paginacion con el uri que puede ser dinamico*/
     function pagination()
     {
-        $segment =4; 
+          //$segment =4; 
         
           $this->load->library('pagination');
 
@@ -82,11 +82,12 @@ class tamiz extends MY_Controller{
             unset($assoc['offset']);// so it doesnt append the offset/20/60
             
             $url = $this->uri->assoc_to_uri($assoc);
-            
+            //echo "count is"; echo count($assoc)."---";
             $config['base_url'] = site_url("tamiz/all/{$url}/offset/");//better always at the end
             $config['total_rows'] = $this->totalRecords;
             $config['per_page'] = $this->limit; 
-            $config['uri_segment'] = count($assoc)>0?$segment+2:$segment;
+            //echo "{count}[["; echo count($assoc)*2+3;
+            $config['uri_segment'] =  count($assoc)*2+4;
             
             
             
@@ -111,6 +112,7 @@ class tamiz extends MY_Controller{
         
         //print_r($_POST);
         //die();
+        
         $t = new TamizModel($id);
         
         
@@ -125,7 +127,13 @@ class tamiz extends MY_Controller{
             $t->$key = $this->input->post($key);
         }
         $t->save();
-        redirect(site_url("/tamiz/"));
+        
+        if ($_POST['saveType']=='save-list')
+           redirect(site_url('tamiz/all/'));
+            
+        else if ($_POST['saveType']=='save')
+           redirect(site_url("tamiz/form/{$t->id}"));
+       
         
     }
     

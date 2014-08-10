@@ -67,42 +67,36 @@
                                                 <table id="datatable_fixed_column" class="table dataTable table-striped table-bordered" width="100%">
 
                                                 <thead>
-                                                                <tr>
-                                                                        <th class="hasinput" style="width:17%">
-                                                                                <input type="text" class="form-control" placeholder="Filter Name" />
-                                                                        </th>
-                                                                        <th class="hasinput" style="width:18%">
-                                                                                <div class="input-group">
-                                                                                        <input class="form-control" placeholder="Filter Position" type="text">
-                                                                                        <span class="input-group-addon">
-                                                                                                <span class="onoffswitch">
-                                                                                                        <input type="checkbox" name="start_interval" class="onoffswitch-checkbox" id="st3">
-                                                                                                        <label class="onoffswitch-label" for="st3"> 
-                                                                                                                <span class="onoffswitch-inner" data-swchon-text="YES" data-swchoff-text="NO"></span> 
-                                                                                                                <span class="onoffswitch-switch"></span> 
-                                                                                                        </label> 
-                                                                                                </span>
-                                                                                        </span>
-                                                                                </div>
+
+<tr>
+        <form>
+        <th class="hasinput" colspan="10" style="width:17%">
+       
+            <input style="display: block;width: 160px;margin-right:10px;float:left;" type="text" class="form-control" placeholder="Filtrar por folio" />
+            <input style="display: block;width: 300px;margin-right:10px;float:left;" type="text" class="form-control" placeholder="Filtrar por nombre" />
+            
+            <input style="margin-right: 0px;display: block;width: 200px;float:left;"  id="dateselect_filter" type="text" placeholder="Filter Date" class="form-control datepicker" data-dateformat="yy/mm/dd">
+          
+            <label style="margin-right:0px;display: block;top:-4px;left:-30px;float:left;"for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Filter Date"></label>                
+            
+            
+            <input style="margin-right: 0px;display: block;width: 200px;float:left;"  id="dateselect_filter" type="text" placeholder="Filter Date" class="form-control datepicker" data-dateformat="yy/mm/dd">
+          
+            
+            <label style="top:-4px;left:-30px;display: block;float:left;"for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Filter Date"></label>                
+              
+            <input style="width: 80px;" type="submit" value="buscar" name="" class="btn btn-default">
+            
+        </th>
+       </form>    
+      
+</tr>
 
 
-                                                                        </th>
-                                                                        <th class="hasinput" style="width:16%">
-                                                                                <input type="text" class="form-control" placeholder="Filter Office" />
-                                                                        </th>
-                                                                        <th class="hasinput" style="width:17%">
-                                                                                <input type="text" class="form-control" placeholder="Filter Age" />
-                                                                        </th>
-                                                                        <th class="hasinput icon-addon">
-                                                                                <input id="dateselect_filter" type="text" placeholder="Filter Date" class="form-control datepicker" data-dateformat="yy/mm/dd">
-                                                                                <label for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Filter Date"></label>
-                                                                        </th>
-                                                                        <th class="hasinput" style="width:16%">
-                                                                                <input type="text" class="form-control" placeholder="Filter Salary" />
-                                                                        </th>
-                                                                </tr>
                                                     <tr>
-                                                        <th class="sorting_desc" data-class="expand"><a href="<?php echo site_url('tamiz/all/')?>">Name</a></th>
+                                                    <th class="sorting_desc" data-class="expand">
+                                                        
+                                                    <a href="<?php echo $record->getOrderByLink('name') ?>">Name</a></th>
                                                     <th>Position</th>
                                                     <th data-hide="phone">Office</th>
                                                     <th data-hide="phone">Age</th>
@@ -112,17 +106,17 @@
                                                 </thead>
                                                 <tbody>
                                                 <?php foreach ($all as $row):?>
-                                                <tr>
-                                                    <td ><a href="<?php echo $row->editLink() ?>">
-                                                    <?php echo $row->apellido_paterno ." ".$row->apellido_materno." ".$row->nombre ?>
-                                                    </a>
-                                                </td>
-                                                <td><?php echo $row->folio;?></td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2014/12/12</td>
-                                                <td>$320,800</td>
-                                                </tr>
+                                                    <tr>
+                                                        <td ><a href="<?php echo $row->editLink() ?>">
+                                                        <?php echo $row->apellido_paterno ." ".$row->apellido_materno." ".$row->nombre ?>
+                                                        </a>
+                                                    </td>
+                                                    <td><?php echo $row->folio;?></td>
+                                                    <td>Edinburgh</td>
+                                                    <td>61</td>
+                                                    <td>2014/12/12</td>
+                                                    <td>$320,800</td>
+                                                    </tr>
                                                 <?php endforeach;?>
                                                 </tbody>
                                                 </table>

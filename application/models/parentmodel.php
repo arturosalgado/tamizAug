@@ -3,9 +3,12 @@
 
 class ParentModel extends DataMapper{
     
-  
-    function __construct($id = NULL) {
+    protected  $CI;
+            function __construct($id = NULL) {
         parent::__construct($id);
+        
+        $this->CI = & get_instance();
+        
     }
     
     

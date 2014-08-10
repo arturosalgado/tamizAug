@@ -331,5 +331,18 @@ class TamizModel extends ParentModel
         
     }
     
+    function getOrderByLink()
+    {
+        
+        $assoc = $this->CI->uri->uri_to_assoc();
+        
+        $assoc['sort']='name';
+        $assoc['dir']='asc';
+        
+        $url = $this->CI->uri->assoc_to_uri($assoc);
+        
+        
+        return site_url("tamiz/all/{$url}");
+    }
     
 }
