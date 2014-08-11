@@ -37,10 +37,10 @@
                         <li>
                                 <a href="inbox.html"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inbox</span><span class="badge pull-right inbox-badge">14</span></a>
                         </li>
-                        <li>
+                        <li >
                                 <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Graphs</span></a>
                                 <ul>
-                                        <li>
+                                        <li >
                                                 <a href="flot.html">Flot Chart</a>
                                         </li>
                                         <li>
@@ -54,18 +54,16 @@
                                         </li>
                                 </ul>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Tamiz</span></a>
                                 <ul>
-                                        <li class="active" >
+                                        <li  >
                                                 <a href="<?php echo site_url('/tamiz/all/')?>">Listado</a>
                                         </li>
-                                        <li >
-                                                <a href="<?php echo site_url('/tamiz/form/')?>">Nuevo<span class="badge inbox-badge bg-color-greenLight">v1.10</span></a>
+                                        <li class="active">
+                                                <a href="<?php echo site_url('/tamiz/form/')?>">Nuevo</a>
                                         </li>
-                                        <li>
-                                                <a href="jqgrid.html">Jquery Grid</a>
-                                        </li>
+                                        
                                 </ul>
                         </li>
                         <li>

@@ -74,10 +74,10 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-    <form id="form" class="smart-form" method="post" action="<?php echo site_url('/tamiz/update').'/'.$record->id; ?>">
+    <form id="form-tamiz" class="smart-form" method="post" action="<?php echo site_url('/tamiz/update').'/'.$record->id; ?>">
      <fieldset>  
-         <input name="saveType" id="saveType"  > 
-    
+         <input name="saveType" id="saveType"  type="hidden"> 
+         <input name="id" id="current-id" value="<?php echo $record->id?>"  type="hidden" > 
     <div class="row">
                 <section class="col col-3">
                         Unidad donde se toma la muestra
@@ -131,7 +131,7 @@
                 <section class="col col-3">
                         Folio 
                         <label class="input">
-                            <input name = "folio" type="text" value="<?php echo $record->folio ?>">
+                            <input id="folio" name = "folio" type="text" value="<?php echo $record->folio ?>">
                         </label>
                 </section>
      </div>  
@@ -314,9 +314,10 @@
                         </label>
                 </section>
                 <section class="col col-2">
-                        Apeelido Materno
+                        Apellido Materno
                         <label class="input">
                             <input 
+                                 id="apellido_paterno"
                                   required="required"
                                   title='Se requiere esta información'
                                 type="text" name="apellido_materno" value="<?php echo $record->apellido_materno ?>" placeholder="">

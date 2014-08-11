@@ -74,7 +74,7 @@ class tamiz extends MY_Controller{
            //$t->get();    
            
            //echo $this->totalRecords=$t->result_count();
-           ECHO "<BR>";
+          
            $t->get($this->limit,$this->offset);    
            //echo $this->totalRecords=$t->result_count();
            
@@ -239,6 +239,24 @@ class tamiz extends MY_Controller{
     function duplicate()
     {
         
+    }
+    
+    
+    /*used to redirect here from*/
+    function folio($folio=null)
+    {
+        $t = new TamizModel();
+        $t->where('folio',$folio)->get(1);
+        redirect(site_url("tamiz/form/{$t->id}"));
+    }
+    
+    function checkFolio($folio=null,$id = null)
+    {
+     
+      if ($this->folioExist($folio) and empty($id))
+        echo 1;
+      else
+        echo 0;
     }
 
 }

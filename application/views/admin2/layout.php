@@ -69,8 +69,7 @@
 
 				<!-- Note: The activity badge color changes when clicked and resets the number to 0
 				Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-				<span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
-
+				
 				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
 				<div class="ajax-dropdown">
 
@@ -112,30 +111,7 @@
 			</div>
 
 			<!-- projects dropdown -->
-			<div class="project-context hidden-xs">
-
-				<span class="label">Projects:</span>
-				<span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
-
-				<!-- Suggestion: populate this list with fetch and push technique -->
-				<ul class="dropdown-menu">
-					<li>
-						<a href="javascript:void(0);">Online e-merchant management system - attaching integration with the iOS</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);">Notes on pipeline upgradee</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);">Assesment Report for merchant account</a>
-					</li>
-					<li class="divider"></li>
-					<li>
-						<a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
-					</li>
-				</ul>
-				<!-- end dropdown-menu-->
-
-			</div>
+			
 			<!-- end projects dropdown -->
 
 			<!-- pulled right: nav area -->
@@ -192,7 +168,7 @@
 
 				<!-- input: search field -->
 				<form action="search.html" class="header-search pull-right">
-					<input id="search-fld"  type="text" name="param" placeholder="Find reports and more" data-autocomplete='[
+					<input id="search-fld"  type="text" name="param" placeholder="Buscar " data-autocomplete='[
 					"ActionScript",
 					"AppleScript",
 					"Asp",
@@ -229,31 +205,15 @@
 				<!-- end fullscreen button -->
 				
 				<!-- #Voice Command: Start Speech -->
-				<div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
-					<div> 
-						<a href="javascript:void(0)" title="Voice Command" data-action="voiceCommand"><i class="fa fa-microphone"></i></a> 
-						<div class="popover bottom"><div class="arrow"></div>
-							<div class="popover-content">
-								<h4 class="vc-title">Voice command activated <br><small>Please speak clearly into the mic</small></h4>
-								<h4 class="vc-title-error text-center">
-									<i class="fa fa-microphone-slash"></i> Voice command failed
-									<br><small class="txt-color-red">Must <strong>"Allow"</strong> Microphone</small>
-									<br><small class="txt-color-red">Must have <strong>Internet Connection</strong></small>
-								</h4>
-								<a href="javascript:void(0);" class="btn btn-success" onclick="commands.help()">See Commands</a> 
-								<a href="javascript:void(0);" class="btn bg-color-purple txt-color-white" onclick="$('#speech-btn .popover').fadeOut(50);">Close Popup</a> 
-							</div>
-						</div>
-					</div>
-				</div>
+				
 				<!-- end voice command -->
 
 				<!-- multiple lang dropdown : find all flags in the flags page -->
 				<ul class="header-dropdown-list hidden-xs">
 					<li>
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="<?php echo $theme; ?>img/blank.gif" class="flag flag-us" alt="United States"> <span> English (US) </span> <i class="fa fa-angle-down"></i> </a>
+						
 						<ul class="dropdown-menu pull-right">
-							<li class="active">
+							<li >
 								<a href="javascript:void(0);"><img src="<?php echo $theme; ?>img/blank.gif" class="flag flag-us" alt="United States"> English (US)</a>
 							</li>
 							<li>
@@ -296,7 +256,7 @@
 		<!-- END HEADER -->
 
 		<!-- navigation -->
-                {navigation8}
+                {navigation}
 		<!-- MAIN PANEL -->
                 <div id="main" role="main" style="">
 
@@ -636,100 +596,21 @@
 			
 			pageSetUp();
 
-			var $checkoutForm = $('#checkout-form').validate({
+			var $checkoutForm = $('#form-tamiz').validate({
 			// Rules for form validation
 				rules : {
-					fname : {
+					apellido_paterno : {
 						required : true
-					},
-					lname : {
-						required : true
-					},
-					email : {
-						required : true,
-						email : true
-					},
-					phone : {
-						required : true
-					},
-					country : {
-						required : true
-					},
-					city : {
-						required : true
-					},
-					code : {
-						required : true,
-						digits : true
-					},
-					address : {
-						required : true
-					},
-					name : {
-						required : true
-					},
-					card : {
-						required : true,
-						creditcard : true
-					},
-					cvv : {
-						required : true,
-						digits : true
-					},
-					month : {
-						required : true
-					},
-					year : {
-						required : true,
-						digits : true
 					}
+					
 				},
 		
 				// Messages for form validation
 				messages : {
-					fname : {
-						required : 'Please enter your first name'
-					},
-					lname : {
-						required : 'Please enter your last name'
-					},
-					email : {
-						required : 'Please enter your email address',
-						email : 'Please enter a VALID email address'
-					},
-					phone : {
-						required : 'Please enter your phone number'
-					},
-					country : {
-						required : 'Please select your country'
-					},
-					city : {
-						required : 'Please enter your city'
-					},
-					code : {
-						required : 'Please enter code',
-						digits : 'Digits only please'
-					},
-					address : {
-						required : 'Please enter your full address'
-					},
-					name : {
-						required : 'Please enter name on your card'
-					},
-					card : {
-						required : 'Please enter your card number'
-					},
-					cvv : {
-						required : 'Enter CVV2',
-						digits : 'Digits only'
-					},
-					month : {
-						required : 'Select month'
-					},
-					year : {
-						required : 'Enter year',
-						digits : 'Digits only please'
+					apellido_paterno : {
+						required : 'Apellido paterno es obligatorio'
 					}
+					
 				},
 		
 				// Do not change code below
@@ -1063,14 +944,14 @@
                          //alert('save')
                          
                          $("#saveType").attr("value","save");
-                         $('#form').submit();
+                         $('#form-tamiz').submit();
                          
                      });
                      $("#save-form-list").click(function(){
                          
                          //alert('list')
                          $("#saveType").attr("value","save-list");
-                         $('#form').submit();
+                         $('#form-tamiz').submit();
                          
                      });   
                       $("#save-new").click(function(){
@@ -1096,18 +977,13 @@
                 $("#smart-mod-eg1").click(function(e) {
                         $.SmartMessageBox({
                                 title : "Smart Alert!",
-                                content : "This is a confirmation box. Can be programmed for button callback",
+                                content : "El folio que intenta guardar ya existe. Desea ir al registro",
                                 buttons : '[No][Yes]'
                         }, function(ButtonPressed) {
                                 if (ButtonPressed === "Yes") {
-
-                                        $.smallBox({
-                                                title : "Callback function",
-                                                content : "<i class='fa fa-clock-o'></i> <i>You pressed Yes...</i>",
-                                                color : "#659265",
-                                                iconSmall : "fa fa-check fa-2x fadeInRight animated",
-                                                timeout : 4000
-                                        });
+                                   var curr_id =  $("#smart-mod-eg1").data('folio');
+                                   //alert(curr_id)
+                                   window.location.replace(site_url+"/tamiz/folio/"+curr_id);
                                 }
                                 if (ButtonPressed === "No") {
                                         $.smallBox({
@@ -1125,19 +1001,35 @@
 
                     
                     
-                $("#form").submit(function(){
-                    var folio = $("#folio").val();
-                    var checkUrl = site_url+"tamiz/checkFolio/"+folio;
-                    prompt(checkUrl,checkUrl);
-                    $.get(checkUrl,funtion(data){
-                        
-                      alert(data)  
-                        
+                    $("#form").submit(function(){
+                        var submit = true;
+                        var folio = $("#folio").val();
+                        var current_id = $('#current-id').val();
+                        var checkUrl = site_url+"/tamiz/checkFolio/"+folio+"/"+current_id;
+                        //alert(checkUrl)
+                        /*
+                         * i need it async to wait for the verifiaction, 
+                         * if the verifaction fails, I wont submit the form
+                         */ 
+                        jQuery.ajax({
+                            url:    checkUrl,
+                            success: function(result) {
+                                      
+                                         if(result == 1)
+                                         {    
+                                             //alert($('#folio').val())
+                                             $('#smart-mod-eg1').data('folio',$('#folio').val());
+                                             $('#smart-mod-eg1').trigger('click');
+                                             submit = false;
+                                         }
+                                     },
+                            async:   false
+                        });          
+                        return submit;
+                       
+                       
                     }); 
-                    
-                    
-                
-                });    
+              
                     
                         
 		})
