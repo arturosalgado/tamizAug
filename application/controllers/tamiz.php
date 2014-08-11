@@ -6,6 +6,9 @@ class tamiz extends MY_Controller{
     
     private $search_name = '';
     private $search_folio = '';
+    private $search_inicio = '';
+    private $search_fin = '';
+    
     private $offset = 0;
     private $limit = 20;
     private $totalRecords = 0;
@@ -24,6 +27,12 @@ class tamiz extends MY_Controller{
     
     function Content()
     {
+       $this->search_name = $this->phpsession->get("tamiz_search_name"); 
+       $this->search_folio = $this->phpsession->get("tamiz_search_folio"); 
+       $this->search_inicio = $this->phpsession->get("tamiz_search_inicio"); 
+       $this->search_fin =    $this->phpsession->get("tamiz_search_fin"); 
+       
+        
        if ($this->view=='form') {
        //echo " id ".$this->id;
        $t = new TamizModel($this->id);    
@@ -38,8 +47,12 @@ class tamiz extends MY_Controller{
            $t = new TamizModel();
            $this->data['record']=$t;
            
+           
+           $t->start_cache();   
+           
             // search section 
             if ($this->search_name != ''){
+            
             $t->like('nombre',  $this->search_name);   
             $t->or_like('apellido_paterno', $this->search_name);
             $t->or_like('apellido_materno', $this->search_name);
@@ -49,21 +62,34 @@ class tamiz extends MY_Controller{
              $t->where('folio',  $this->search_folio);   
             }
             
-  
+            $t->stop_cache();
+            $q =  $t->get_raw();
+       
+            $r = $q->num_rows();
            
-            
+            $this->totalRecords = $r;
             
             
           //  $t->join
+           //$t->get();    
            
+           //echo $this->totalRecords=$t->result_count();
+           ECHO "<BR>";
            $t->get($this->limit,$this->offset);    
-           $this->totalRecords=$t->count();
+           //echo $this->totalRecords=$t->result_count();
            
            $all = $t->all;
            $this->data['all']=$all;
            
            $this->data['pagination']=$this->pagination();
 
+           //search values 
+           
+           $this->data['search_name']=  $this->search_name;
+           $this->data['search_folio']=  $this->search_folio;
+           $this->data['search_inicio']=  $this->search_inicio;
+           $this->data['search_fin']=  $this->search_fin;
+           
            
            return  $this->load->view("{$this->theme}/tamiz/list_view",  $this->data,true);  
         
@@ -126,17 +152,42 @@ class tamiz extends MY_Controller{
            // echo "<br>";
             $t->$key = $this->input->post($key);
         }
+        
+        if ($id ==null and !$this->folioExist($t->folio)) // id null==first time save
         $t->save();
+        else if ($id!=null) {
+          $t->save();// just an update
+        }
+            
+        
+        
         
         if ($_POST['saveType']=='save-list')
            redirect(site_url('tamiz/all/'));
             
         else if ($_POST['saveType']=='save')
            redirect(site_url("tamiz/form/{$t->id}"));
+           
+        else if ($_POST['saveType']=='save-new')
+           redirect(site_url("tamiz/form/"));   
+        
+    }
+    function folioExist($folio)
+    {
+        
+        $t = new TamizModel();
+        $t->where('folio',$folio)->get();
+        if ($t->id)
+        {
+           return true;
+            
+        }
+        else {
+          return false;
+        }
        
         
     }
-    
     function formatdate($date)
     {
         list($d,$m,$y)= @split("/",$date);
@@ -151,9 +202,19 @@ class tamiz extends MY_Controller{
    
     function search()
     {
-        $this->search_name = $this->input->post("name");
+        $this->search_name = $this->input->post("nombre");
         $this->search_folio = $this->input->post("folio");
-        $this->index();
+        $this->search_inicio = $this->input->post("inicio");
+        $this->search_fin = $this->input->post("fin");
+        
+        $this->phpsession->set("tamiz_search_name",$this->search_name);
+        $this->phpsession->set("tamiz_search_folio",$this->search_folio);
+        $this->phpsession->set("tamiz_search_inicio",$this->search_inicio);
+        $this->phpsession->set("tamiz_search_fin",$this->search_fin);
+        
+        //*prevent re-submit form notice */
+        redirect(site_url('tamiz/all'));
+        //$this->index();
     }
     
     function insert()
@@ -173,6 +234,10 @@ class tamiz extends MY_Controller{
     {
        
         $this->index();
+        
+    }
+    function duplicate()
+    {
         
     }
 

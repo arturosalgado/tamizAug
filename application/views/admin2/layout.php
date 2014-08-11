@@ -51,7 +51,10 @@
 		<link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
 		<link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
 		<link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
-
+                <script>
+                 var site_url = '<?php echo site_url() ?>';
+                 var base_url = '<?php echo base_url() ?>';
+                </script>
 	</head>
 	<body class="">
 		<!-- possible classes: minified, fixed-ribbon, fixed-header, fixed-width-->
@@ -293,7 +296,7 @@
 		<!-- END HEADER -->
 
 		<!-- navigation -->
-                {navigation}
+                {navigation8}
 		<!-- MAIN PANEL -->
                 <div id="main" role="main" style="">
 
@@ -1070,8 +1073,73 @@
                          $('#form').submit();
                          
                      });   
+                      $("#save-new").click(function(){
+                         
+                         //alert('list')
+                         $("#saveType").attr("value","save-new");
+                         $('#form').submit();
+                         
+                     });       
                         
-		
+                     
+            
+                    $("#reset").click(function(){
+                       $('#search-form').find(':input.form-control').each(function(){
+                                $(this).val('');
+                        });
+                       $('#search-form').submit();
+                    });
+                    
+                    //--------------------------
+                    
+                    
+                $("#smart-mod-eg1").click(function(e) {
+                        $.SmartMessageBox({
+                                title : "Smart Alert!",
+                                content : "This is a confirmation box. Can be programmed for button callback",
+                                buttons : '[No][Yes]'
+                        }, function(ButtonPressed) {
+                                if (ButtonPressed === "Yes") {
+
+                                        $.smallBox({
+                                                title : "Callback function",
+                                                content : "<i class='fa fa-clock-o'></i> <i>You pressed Yes...</i>",
+                                                color : "#659265",
+                                                iconSmall : "fa fa-check fa-2x fadeInRight animated",
+                                                timeout : 4000
+                                        });
+                                }
+                                if (ButtonPressed === "No") {
+                                        $.smallBox({
+                                                title : "Callback function",
+                                                content : "<i class='fa fa-clock-o'></i> <i>You pressed No...</i>",
+                                                color : "#C46A69",
+                                                iconSmall : "fa fa-times fa-2x fadeInRight animated",
+                                                timeout : 4000
+                                        });
+                                }
+
+                        });
+                        e.preventDefault();
+                })
+
+                    
+                    
+                $("#form").submit(function(){
+                    var folio = $("#folio").val();
+                    var checkUrl = site_url+"tamiz/checkFolio/"+folio;
+                    prompt(checkUrl,checkUrl);
+                    $.get(checkUrl,funtion(data){
+                        
+                      alert(data)  
+                        
+                    }); 
+                    
+                    
+                
+                });    
+                    
+                        
 		})
 
 		</script>

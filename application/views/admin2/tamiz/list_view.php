@@ -69,35 +69,38 @@
                                                 <thead>
 
 <tr>
-        <form>
+     
         <th class="hasinput" colspan="10" style="width:17%">
-       
-            <input style="display: block;width: 160px;margin-right:10px;float:left;" type="text" class="form-control" placeholder="Filtrar por folio" />
-            <input style="display: block;width: 300px;margin-right:10px;float:left;" type="text" class="form-control" placeholder="Filtrar por nombre" />
+        <form id="search-form" method="post" action="<?php echo $record->getSearchFormAction() ?>" >
+            <input value="<?php echo $search_folio; ?>" name="folio" style="display: block;width: 160px;margin-right:10px;float:left;" type="text" class="form-control" placeholder="Filtrar por folio" />
+            <input value="<?php echo $search_name; ?>" name="nombre"style="display: block;width: 300px;margin-right:10px;float:left;" type="text" class="form-control" placeholder="Filtrar por nombre" />
             
-            <input style="margin-right: 0px;display: block;width: 200px;float:left;"  id="dateselect_filter" type="text" placeholder="Filter Date" class="form-control datepicker" data-dateformat="yy/mm/dd">
+            <input value="<?php echo $search_inicio; ?>" name="inicio" style="margin-right: 0px;display: block;width: 200px;float:left;"  id="dateselect_filter" type="text" placeholder="Desde" class="form-control datepicker" data-dateformat="yy/mm/dd">
           
             <label style="margin-right:0px;display: block;top:-4px;left:-30px;float:left;"for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Filter Date"></label>                
             
-            
-            <input style="margin-right: 0px;display: block;width: 200px;float:left;"  id="dateselect_filter" type="text" placeholder="Filter Date" class="form-control datepicker" data-dateformat="yy/mm/dd">
+             
+            <input value="<?php echo $search_fin; ?>"name="fin" style="margin-right: 0px;display: block;width: 200px;float:left;"  id="dateselect_filter1" type="text" placeholder="Hasta" class="form-control datepicker" data-dateformat="yy/mm/dd">
           
             
-            <label style="top:-4px;left:-30px;display: block;float:left;"for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Filter Date"></label>                
+            <label style="top:-4px;left:-30px;display: block;float:left;"for="dateselect_filter1" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Filter Date"></label>                
               
             <input style="width: 80px;" type="submit" value="buscar" name="" class="btn btn-default">
-            
+            <input id="reset"style="width: 80px;" type="reset" value="limpiar" name="" class="btn btn-default">
+        </form>    
         </th>
-       </form>    
+         
       
 </tr>
 
 
                                                     <tr>
                                                     <th class="sorting_desc" data-class="expand">
-                                                        
-                                                    <a href="<?php echo $record->getOrderByLink('name') ?>">Name</a></th>
-                                                    <th>Position</th>
+                                                        <a href="<?php echo $record->getOrderByLink('id') ?>">Folio</a>
+                                                    </th>
+                                                  
+                                                    
+                                                    <th>Nombre</th>
                                                     <th data-hide="phone">Office</th>
                                                     <th data-hide="phone">Age</th>
                                                     <th data-hide="phone,tablet">Start date</th>
@@ -107,10 +110,17 @@
                                                 <tbody>
                                                 <?php foreach ($all as $row):?>
                                                     <tr>
-                                                        <td ><a href="<?php echo $row->editLink() ?>">
-                                                        <?php echo $row->apellido_paterno ." ".$row->apellido_materno." ".$row->nombre ?>
-                                                        </a>
-                                                    </td>
+                                                        <td >
+                                                            <a href="<?php echo $row->editLink() ?>">
+                                                            <?php echo $row->folio; ?>
+                                                            </a>
+                                                        </td>
+                                                   
+                                                        <td >
+                                                            <a href="<?php echo $row->editLink() ?>">
+                                                                <?php echo $row->apellido_paterno ." ".$row->apellido_materno." ".$row->nombre ?>
+                                                            </a>
+                                                        </td>
                                                     <td><?php echo $row->folio;?></td>
                                                     <td>Edinburgh</td>
                                                     <td>61</td>

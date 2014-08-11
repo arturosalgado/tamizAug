@@ -344,5 +344,8 @@ class TamizModel extends ParentModel
         
         return site_url("tamiz/all/{$url}");
     }
-    
+    function getSearchFormAction()
+    {
+        return site_url('tamiz/search/');
+    }
 }
