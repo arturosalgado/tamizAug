@@ -4,7 +4,9 @@
 class ParentModel extends DataMapper{
     
     protected  $CI;
-            function __construct($id = NULL) {
+    protected  $ViewPath='';
+    
+    function __construct($id = NULL) {
         parent::__construct($id);
         
         $this->CI = & get_instance();
@@ -38,7 +40,7 @@ class ParentModel extends DataMapper{
     
     function viewPath()
     {
-        return "";
+        return $this->ViewPath;
         
     }
     

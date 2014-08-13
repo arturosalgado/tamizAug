@@ -66,6 +66,18 @@
                                         
                                 </ul>
                         </li>
+                        <li >
+                            <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Usuarios</span></a>
+                                <ul>
+                                        <li  >
+                                                <a href="<?php echo site_url('/users/all/')?>">Listado</a>
+                                        </li>
+                                        <li class="active">
+                                                <a href="<?php echo site_url('/users/form/')?>">Nuevo</a>
+                                        </li>
+                                        
+                                </ul>
+                        </li>
                         <li>
                                 <a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Forms</span></a>
                                 <ul>

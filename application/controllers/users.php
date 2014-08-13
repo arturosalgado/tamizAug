@@ -7,6 +7,10 @@ class users extends MY_Controller{
     private $search_name = '';
     private $search_folio = '';
     
+    private $Model = 'UserModel';
+    protected $ViewPath = 'users/';
+    
+    
     function __construct() {
         parent::__construct();
         
@@ -16,45 +20,59 @@ class users extends MY_Controller{
     
     function Content()
     {
+       $this->search_name = $this->phpsession->get("{$this->ViewPath}_search_name"); 
+       $this->search_folio = $this->phpsession->get("{$this->ViewPath}_search_folio"); 
+       $this->search_inicio = $this->phpsession->get("{$this->ViewPath}_search_inicio"); 
+       $this->search_fin =    $this->phpsession->get("{$this->ViewPath}_search_fin");  
+        
        if ($this->view=='form') {
        //echo " id ".$this->id;
-       $t = new TamizModel($this->id);    
+       $t = new $this->Model($this->id);    
        $t->where('id',  $this->id)->get(1);
       
        //echo $t->nombre;
       // print_r($record);
        
        $this->data['record']=$t;    
-       return  $this->load->view("{$this->theme}/tamiz/form",  $this->data,true);     
+       return  $this->load->view("{$this->theme}/{$this->ViewPath}/form",  $this->data,true);     
        }
        else
        {    
-           $t = new TamizModel();
+           $t = new $this->Model();
            $this->data['record']=$t;
            
+           
+            $t->start_cache();   
             // search section 
             if ($this->search_name != ''){
             $t->like('nombre',  $this->search_name);   
-            $t->or_like('apellido_paterno', $this->search_name);
-            $t->or_like('apellido_materno', $this->search_name);
+            $t->or_like('paterno', $this->search_name);
+            $t->or_like('materno', $this->search_name);
             }
 
-            if ($this->search_folio != ''){
-             $t->where('folio',  $this->search_folio);   
-            }
+            //get only the total 
+            $t->stop_cache();
+            $q =  $t->get_raw();
+            $r = $q->num_rows();
            
-  
-           
+            $this->totalRecords = $r;
             
             
             
           //  $t->join
            
-           $t->get();    
-               
-           $all = $t->all;
-           $this->data['all']=$all;
-           return  $this->load->view("{$this->theme}/tamiz/list_view",  $this->data,true);  
+            $t->get($this->limit,$this->offset);    
+            
+          
+            
+            $all = $t->all;
+            
+            
+            $this->data['all']=$all;
+            $this->data['pagination']=$this->pagination();
+            
+            
+           return  $this->load->view("{$this->theme}/users/list_view",  $this->data,true);  
         
        } 
         
@@ -73,15 +91,9 @@ class users extends MY_Controller{
     {
         
         
-        //print_r($_POST);
-        //die();
-        $t = new TamizModel($id);
         
-        
-        $_POST['fechadenacimiento']= $this->formatdate($_POST['fechadenacimiento']);
-        $_POST['fechademuestra']= $this->formatdate($_POST['fechademuestra']);
-      
-      
+        $t = new $this->Model($id);
+       
         
         foreach($_POST as $key =>$field){
            // echo "key is $key ".$field;
@@ -89,7 +101,17 @@ class users extends MY_Controller{
             $t->$key = $this->input->post($key);
         }
         $t->save();
-        redirect(site_url("/tamiz/"));
+       
+        
+        if ($_POST['saveType']=='save-list')
+           redirect(site_url('/users/all/'));
+            
+        else if ($_POST['saveType']=='save')
+           redirect(site_url("/users/form/{$t->id}"));
+           
+        else if ($_POST['saveType']=='save-new')
+           redirect(site_url("/users/form/"));   
+        
         
     }
     
@@ -102,14 +124,29 @@ class users extends MY_Controller{
     }
     
     function getControllerName() {
-        return 'tamiz';
+        return __CLASS__;
     }
    
     function search()
     {
-        $this->search_name = $this->input->post("name");
+        $this->search_name = $this->input->post("nombre");
         $this->search_folio = $this->input->post("folio");
-        $this->index();
+        $this->search_inicio = $this->input->post("inicio");
+        $this->search_fin = $this->input->post("fin");
+        
+        $this->phpsession->set("{$this->ViewPath}_search_name",$this->search_name);
+        $this->phpsession->set("{$this->ViewPath}_search_folio",$this->search_folio);
+        $this->phpsession->set("{$this->ViewPath}_search_inicio",$this->search_inicio);
+        $this->phpsession->set("{$this->ViewPath}_search_fin",$this->search_fin);
+        
+        //*prevent re-submit form notice */
+        redirect(site_url('tamiz/all'));
+        //$this->index();
+    }
+    
+    function all()
+    {
+           $this->index();
     }
     
 }
