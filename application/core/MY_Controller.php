@@ -22,9 +22,13 @@ class MY_Controller extends CI_Controller
         if ($c!='log')
         $this->checkSession();
         
+       // $this->checkRol();
+        
+        
     }
     
     
+            
     function load_page()
     {
         
@@ -45,9 +49,12 @@ class MY_Controller extends CI_Controller
     
     function checkSession()
     {
-       
+      
         
         $this->load->library('phpsession');
+         echo "<pre>";
+       print_r($_SESSION);
+       echo "</pre>";
         $user = $this->phpsession->get('user');
         
         
@@ -124,6 +131,7 @@ class MY_Controller extends CI_Controller
         
         $index = 0;
         $menu[$index]['label']="Tamiz";
+        $menu[$index]['roles']=array("Administrador","Capturista");
             $menu[$index]['items'][0]['label']='listado';
             $menu[$index]['items'][0]['url']=  'tamiz/all/';
             $menu[$index]['items'][0]['active']= $this->is_active($menu[$index]['items'][0]['url']);
@@ -133,7 +141,7 @@ class MY_Controller extends CI_Controller
             $menu[$index]['items'][1]['active']=$this->is_active($menu[$index]['items'][1]['url']);
             
         $index++;
-            
+        $menu[$index]['roles']=array("Administrador");   
             $menu[$index]['label']="Usuarios";
             $menu[$index]['items'][0]['label']='listado';
             $menu[$index]['items'][0]['url']=  'users/all/';
@@ -145,6 +153,7 @@ class MY_Controller extends CI_Controller
             
         
             $index++;
+          $menu[$index]['roles']=array("Administrador");      
             $menu[$index]['label']="Catalogos";
             $menu[$index]['items'][0]['label']='Unidades';
             $menu[$index]['items'][0]['url']=  'tamiz/all';
@@ -209,11 +218,17 @@ class MY_Controller extends CI_Controller
         ///
         
         
-       
-        
+        $user_role=  $this->phpsession->get('role');
+        echo "<h1>$user_role</h1>";
         $ul = new Ul();
         foreach($menu as $item)
         {
+           if (!in_array($user_role,$item['roles']))
+           {
+               continue;
+           }
+            
+            
            $ul->add($this->MenuItem($item['label'],$item['items']));
         }
         
@@ -221,11 +236,12 @@ class MY_Controller extends CI_Controller
     }
     
     function MenuItem($label,$items)
-    {
+    {   
+       
+        $user_role = 'Capturista';
         $lis ='';
         foreach ($items as $k =>$item)
         {
-           
             
             $active = '';
            if ($item['active']==1)

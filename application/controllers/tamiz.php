@@ -11,9 +11,11 @@ class tamiz extends MY_Controller{
     
     protected $offset = 0;
     protected $limit = 20;
-   
+    protected  $roles= array("Capturista");
     function __construct() {
         parent::__construct();
+        $this->checkRol();
+        
         
         $segs = $this->uri->segment_array();
 
@@ -23,7 +25,15 @@ class tamiz extends MY_Controller{
          
         }
     }
-    
+     function checkRol()
+    {
+       $user_role = $this->phpsession->get('role');
+       echo "<h1>$user_role</h1>";
+       if (!in_array($user_role,  $this->roles))
+       {
+          // redirect(site_url('log/in'));
+       }
+    }
     
     function Content()
     {

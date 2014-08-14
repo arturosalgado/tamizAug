@@ -95,7 +95,10 @@
 
 
                                                     <tr>
-                                                    <th class="sorting_desc" data-class="expand">
+                                                   
+                                                    <th style="width:20px!important" class="" data-class="expand">Id.</th>
+                                                  
+                                                    <th data-class="expand">
                                                         <a href="<?php echo $record->getOrderByLink('id') ?>">Folio</a>
                                                     </th>
                                                   
@@ -110,6 +113,11 @@
                                                 <tbody>
                                                 <?php foreach ($all as $row):?>
                                                     <tr>
+                                                        <td style="width:20px!important" >
+                                                            <a href="<?php echo $row->editLink() ?>">
+                                                            <?php echo $row->id; ?>
+                                                            </a>
+                                                        </td>
                                                         <td >
                                                             <a href="<?php echo $row->editLink() ?>">
                                                             <?php echo $row->folio; ?>
@@ -121,11 +129,11 @@
                                                                 <?php echo $row->apellido_paterno ." ".$row->apellido_materno." ".$row->nombre ?>
                                                             </a>
                                                         </td>
-                                                    <td><?php echo $row->folio;?></td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2014/12/12</td>
-                                                    <td>$320,800</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
                                                     </tr>
                                                 <?php endforeach;?>
                                                 </tbody>

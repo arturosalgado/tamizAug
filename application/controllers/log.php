@@ -29,7 +29,12 @@ class log extends MY_Controller
         return $this->parser->parse("admin/login",$this->data);
         
     }
-    
+    function out()
+    {
+        $this->load->library('phpsession');
+        $this->phpsession->destroy();
+        redirect(site_url());
+    }
     function in()
     {
         $this->load_page();
@@ -41,10 +46,29 @@ class log extends MY_Controller
         
         $email    = $this->input->post('email');
         $password = $this->input->post('password');
+        $roles[1]="Administrador";
+        $roles[2]="Supervisor";
+        $roles[3]="Capturista";
+        $roles[4]="Laboratorio";
+        $roles[5]="Estado";
+        $roles[6]="SSA";
         
-        $this->load->library('phpsession');
-        $this->phpsession->set("user",$email);
-        redirect(site_url());
+        $u = new UserModel();
+        $u->where('email',$email);
+        $u->where('password',$password);
+        $u->get(1);
+        if (!empty(intval($u->id)))
+        {
+            //echo $roles[$u->role_id];die();
+            $this->load->library('phpsession');
+            $this->phpsession->set("user",$email);
+            $this->phpsession->set("role",$roles[$u->role_id]);
+            $this->phpsession->set("Name",$u->nombre);
+            redirect(site_url()); 
+        }
+        
+        redirect(site_url('log/in'));
+       
         
     }
     

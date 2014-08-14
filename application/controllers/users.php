@@ -9,14 +9,23 @@ class users extends MY_Controller{
     
     private $Model = 'UserModel';
     protected $ViewPath = 'users/';
-    
-    
+    protected $roles= array("Administrador");
+            
     function __construct() {
-        parent::__construct();
-        
+       parent::__construct();
+       $this->checkRol();
+      
       
     }
-    
+    function checkRol()
+    {
+       $user_role = $this->phpsession->get('role');
+       echo "<h1>$user_role</h1>";
+       if (!in_array($user_role,  $this->roles))
+       {
+           //redirect(site_url());
+       }
+    }
     
     function Content()
     {

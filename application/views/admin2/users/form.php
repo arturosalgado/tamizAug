@@ -180,10 +180,10 @@
                 <section class="col col-3">
                        Rol
                        <label class="select">
-                            <select>
-                                  <option>Admin</option>
-                                  <option>Lab</option>
-                              </select>
+                           <select name="role_id" required="required" title="Por favor seleccione un rol">
+                                <option value="">Seleccione un Rol</option>
+                                <?php echo $record->list_options('RoleModel',$record->role_id); ?>
+                            </select>
                         </label>
                 </section>
                 
