@@ -4,7 +4,7 @@
 			
 			<!-- PAGE HEADER -->
 			<i class="fa-fw fa fa-pencil-square-o"></i> 
-				Usuarios
+				Laboratorios
 			<span>>  
 				Formulario
 			</span>
@@ -80,49 +80,23 @@
          <input name="id" id="current-id" value="<?php echo $record->id?>"  type="hidden" > 
     <div class="row">
                 <section class="col col-3">
-                        Apellido Paterno
+                        Nombre del Laboratorio
                         <label class="input" >
                              
                           <input class="form-control ui-autocomplete-input required" 
-                                  name="paterno"
+                                  name="nombre"
                                   id="unidad_clinica"
                                   required="required"
                                   title='Se requiere esta información'
-                                  value="<?php echo $record->paterno  ?>"
+                                  value="<?php echo $record->nombre  ?>"
                                  placeholder="" type="text" 
                                  autocomplete="off" />
                           
                             
                         </label>
                 </section>
-                <section class="col col-3">
-                        Apellido Materno
-                        <label class="input">
-                            
-                           
-                      <input class="form-control ui-autocomplete-input" 
-                             name="materno"
-                             id="jurisdiccion"
-                               required="required"
-                                  title='Se requiere esta información'
-                             value="<?php echo $record->materno  ?>"
-                             placeholder="" type="text"  />
-                               
-                            
-                        </label>
-                </section>
-                <section class="col col-3">
-                        Nombre(s) 
-                        <label class="input">
-                            <input id="nombre" name="nombre" 
-                                   value="<?php echo $record->nombre; ?>"
-                                   class="form-control ui-autocomplete-input"
-                                   placeholder=""
-                                   required="required"
-                                   type="text" />
-                           
-                        </label>
-                </section>
+                
+                
                 
      </div>  
      <div class="row">
@@ -147,57 +121,13 @@
                 
      </div> 
          
-       <div class="row">
-                
-                <section class="col col-3">
-                        Contraseña
-                        <label class="input">
-                            
-                           
-                      <input class="form-control ui-autocomplete-input" 
-                             name="password"
-                             type="password"
-                             id="jurisdiccion"
-                             title='Se requiere esta información'
-                             value=""
-                             placeholder="" type="text"  /><span>Deje en blanco si <b>no</b> desea cambiar de contraseña</span>
-                               
-                            
-                        </label>
-                </section>
-                
-                
-     </div>    
+     
          
      </fieldset>                                               
      
      
         
-<fieldset>
-    <legend></legend>
-        <div class="row">
-               
-                <section class="col col-3">
-                       Rol
-                       <label class="select">
-                            <select>
-                                  <option>Admin</option>
-                                  <option>Lab</option>
-                              </select>
-                        </label>
-                </section>
-                
-             
-              
-            
-              
-            
-        </div>
 
-        
-
-        
-</fieldset>
    
                                                 
                                                 
