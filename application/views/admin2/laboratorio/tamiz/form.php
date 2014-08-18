@@ -82,10 +82,10 @@
                         Unidad donde se toma la muestra
                         <label class="input" >
                              
-                          <input readonly="readonly" class="form-control ui-autocomplete-input required" 
+                          <input readonly="readonly" class="form-control ui-autocomplete-input" 
                                   name="unidad_clinica"
                                   id="unidad_clinica"
-                                  required="required"
+                              
                                   title='Se requiere esta información'
                                   value="<?php echo $record->unidad_clinica  ?>"
                                  placeholder="" type="text" data-autocomplete=
@@ -105,7 +105,7 @@
                              class="form-control ui-autocomplete-input" 
                              name="unidad_jurisdiccion"
                              id="jurisdiccion"
-                               required="required"
+                           
                                   title='Se requiere esta información'
                              value="<?php echo $record->unidad_jurisdiccion  ?>"
                              placeholder="" type="text" data-autocomplete=

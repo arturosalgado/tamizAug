@@ -5,8 +5,12 @@ class ParentModel extends DataMapper{
     
     protected  $CI;
     protected  $ViewPath='';
-    
-    function __construct($id = NULL) {
+    public  $created_field = 'created_on';
+    public  $updated_field = 'updated_on';
+            
+    public $local_time = TRUE;
+    public $unix_timestamp = TRUE;       
+            function __construct($id = NULL) {
         parent::__construct($id);
         
         $this->CI = & get_instance();
@@ -87,4 +91,19 @@ class ParentModel extends DataMapper{
             
         return $l;
     }
+    
+    
+    function mail_list()
+    {
+        $array = array();
+        foreach($this->get()->all as $row)
+        {
+            if (!empty($row->email))
+            {
+                $array[]=  $row->email;
+            }
+        }
+        return $array;
+    }
+    
 }

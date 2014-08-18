@@ -175,51 +175,51 @@ abstract class MY_Controller extends CI_Controller
           $menu[$index]['roles']=array("Administrador");      
             $menu[$index]['label']="Catalogos";
             $menu[$index]['items'][0]['label']='Unidades';
-            $menu[$index]['items'][0]['url']=  'tamiz/all';
+            $menu[$index]['items'][0]['url']=  '#';
             $menu[$index]['items'][0]['active']= $this->is_active($menu[$index]['items'][0]['url']);
 
             
             $menu[$index]['items'][0]['children'][0]['label']="Listado";
             $menu[$index]['items'][0]['children'][0]['label']="Listado";
-            $menu[$index]['items'][0]['children'][0]['url']='very/good';
+            $menu[$index]['items'][0]['children'][0]['url']='units/all';
             $menu[$index]['items'][0]['children'][0]['active']=$this->is_active( $menu[$index]['items'][0]['children'][0]['url']);
             
             $menu[$index]['items'][0]['children'][1]['label']="Nuevo";
-            $menu[$index]['items'][0]['children'][1]['url']='very/good';
+            $menu[$index]['items'][0]['children'][1]['url']='units/form';
             $menu[$index]['items'][0]['children'][1]['active']=$this->is_active( $menu[$index]['items'][0]['children'][0]['url']);
             ////
             
             $menu[$index]['items'][1]['label']='Jurisdicciones';
-            $menu[$index]['items'][1]['url']=  'tamiz/all';
+            $menu[$index]['items'][1]['url']=  '#';
             $menu[$index]['items'][1]['active']= $this->is_active($menu[$index]['items'][0]['url']);
 
             
             $menu[$index]['items'][1]['children'][0]['label']="Listado";
-            $menu[$index]['items'][1]['children'][0]['url']='very/good';
+            $menu[$index]['items'][1]['children'][0]['url']='jurisdictions/all';
             $menu[$index]['items'][1]['children'][0]['active']=$this->is_active( $menu[$index]['items'][0]['children'][0]['url']);
             
             $menu[$index]['items'][1]['children'][1]['label']="Nuevo";
-            $menu[$index]['items'][1]['children'][1]['url']='very/good';
+            $menu[$index]['items'][1]['children'][1]['url']='jurisdictions/form';
             $menu[$index]['items'][1]['children'][1]['active']=$this->is_active( $menu[$index]['items'][0]['children'][0]['url']);
             
             
             ///
             $menu[$index]['items'][2]['label']='Estados';
-            $menu[$index]['items'][2]['url']=  'tamiz/all';
+            $menu[$index]['items'][2]['url']=  '#';
             $menu[$index]['items'][2]['active']= $this->is_active($menu[$index]['items'][0]['url']);
 
             
             $menu[$index]['items'][2]['children'][0]['label']="Listado";
-            $menu[$index]['items'][2]['children'][0]['url']='very/good';
+            $menu[$index]['items'][2]['children'][0]['url']='estados/all';
             $menu[$index]['items'][2]['children'][0]['active']=$this->is_active( $menu[$index]['items'][0]['children'][0]['url']);
             
             $menu[$index]['items'][2]['children'][1]['label']="Nuevo";
-            $menu[$index]['items'][2]['children'][1]['url']='very/good';
+            $menu[$index]['items'][2]['children'][1]['url']='estados/form';
             $menu[$index]['items'][2]['children'][1]['active']=$this->is_active( $menu[$index]['items'][0]['children'][0]['url']);
             
             $subindex= 3;
             $menu[$index]['items'][$subindex]['label']='Laboratorios';
-            $menu[$index]['items'][$subindex]['url']=  'laboratories/all/';
+            $menu[$index]['items'][$subindex]['url']=  '#';
             $menu[$index]['items'][$subindex]['active']= $this->is_active($menu[$index]['items'][$subindex]['url']);
 
             
@@ -318,5 +318,24 @@ abstract class MY_Controller extends CI_Controller
         </li>';
        return $li; 
     }
+    
+    
+    function all()
+    {
+       
+        $this->index();
+        
+    }
+    
+    function form($id = null)
+    {
+       
+        $this->id = $id;
+       // echo $this->id;
+        $this->view = 'form';
+       $this->index();
+        
+    }
+    
 }
 

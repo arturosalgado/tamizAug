@@ -13,17 +13,17 @@
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-9">
         <ul id="sparks" class="">
                 <li class="sparks-info">
-                    <input id="smart-mod-eg1" type="button" value="Regresar sin Guardar"  />
+                    <input class="smart-mod-eg1" type="button" value="Regresar sin Guardar"  />
                 </li>
                 <li class="sparks-info">
-                    <input type="button" id="save-form" value="Guardar"  />
+                    <input type="button" class="save-form" value="Guardar"  />
                     
                 </li>
                 <li class="sparks-info">
-                    <input type="button" id="save-new" value="Guardar y Nuevo"  />
+                    <input type="button" class="save-new" value="Guardar y Nuevo"  />
                 </li>
                 <li class="sparks-info">
-                    <input type="button" id="save-form-list" value="Guardar e ir al Listado"  />
+                    <input type="button" class="save-form-list" value="Guardar e ir al Listado"  />
                 </li>
         </ul>
 	</div>

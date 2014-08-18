@@ -46,7 +46,7 @@ class tamiz extends MY_Controller{
          redirect (site_url('tamiz/form/'.$t->id));   
         else
         {
-            
+           redirect('tamiz/all');  
         }
         
     }
@@ -154,14 +154,7 @@ class tamiz extends MY_Controller{
    
     
     
-            function form($id = null)
-    {
-        $this->id = $id;
-       // echo $this->id;
-        $this->view = 'form';
-       $this->index();
-        
-    }
+   
     function update($id = null)
     {
         
@@ -174,8 +167,9 @@ class tamiz extends MY_Controller{
         $h = new TamizHistoryModel();  
         $h->clone_me($t,$_POST); 
         
-        
+        if(isset($_POST['fechadenacimiento']))
         $_POST['fechadenacimiento']= $this->formatdate($_POST['fechadenacimiento']);
+        if(isset($_POST['fechademuestra']))
         $_POST['fechademuestra']= $this->formatdate($_POST['fechademuestra']);
       
       
@@ -267,12 +261,7 @@ class tamiz extends MY_Controller{
         
     }
     
-    function all()
-    {
-       
-        $this->index();
-        
-    }
+   
     function duplicate()
     {
         
@@ -310,7 +299,7 @@ class tamiz extends MY_Controller{
     function importfile()
     {
         
-        print_r($_FILES);
+        //print_r($_FILES);
      
         $config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'csv|txt';
@@ -352,19 +341,22 @@ class tamiz extends MY_Controller{
            
            
            $t = new TamizModel();
-           $folio = $temparr[0];
-           $laboratorio = $temparr[1];
-           $ths = $reference[$temparr[2]];
-           $ths_valor = $temparr[3];
+           $index = 0;
+           $folio = $temparr[$index++];
+           $laboratorio = $temparr[$index++];
+           $calidad = $temparr[$index++];
            
-           $_17oh = $reference[$temparr[4]];
-           $_17oh_valor = $temparr[5];
+           $ths = $reference[$temparr[$index++]];
+           $ths_valor = $temparr[$index++];
            
-           $gal = $reference[$temparr[6]];
-           $gal_valor = $temparr[7];
+           $_17oh = $reference[$temparr[$index++]];
+           $_17oh_valor = $temparr[$index++];
            
-           $pku = $reference[$temparr[8]];
-           $pku_valor = $temparr[9];
+           $gal = $reference[$temparr[$index++]];
+           $gal_valor = $temparr[$index++];
+           
+           $pku = $reference[$temparr[$index++]];
+           $pku_valor = $temparr[$index++];
            
            
            $t->where('folio',$folio)->get(1);
@@ -373,7 +365,8 @@ class tamiz extends MY_Controller{
            {    
                 $t->folio= $folio;
                 $t->laboratorio= $laboratorio;
-                
+                $t->muestraadecuada = $calidad;
+                   
                 $t->ths = $ths;
                 $t->ths_valor = $ths_valor;
                 
@@ -384,7 +377,7 @@ class tamiz extends MY_Controller{
                 $t->gal_valor = $gal_valor;
                 $t->pku = $pku;
                 $t->pku_valor = $pku_valor;
-                
+             
                 
                 $t->save();
            }
@@ -392,7 +385,8 @@ class tamiz extends MY_Controller{
            {
                 $t->folio= $folio;
                 $t->laboratorio= $laboratorio;
-                
+                $t->muestraadecuada = $calidad;
+                 
                 $t->ths = $ths;
                 $t->ths_valor = $ths_valor;
                 

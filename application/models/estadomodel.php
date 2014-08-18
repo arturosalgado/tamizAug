@@ -7,8 +7,9 @@ class EstadoModel extends ParentModel
     public  $table = 'estados';
     
     public $has_one = array('tamizmodel');
+    protected  $theme = 'admin2';
             
-    
+            
     function __construct($id = NULL) {
         parent::__construct($id);
     }
@@ -101,11 +102,11 @@ class EstadoModel extends ParentModel
     
     function editLink(){
         
-        return site_url("catalogs/edit/estado/{$this->id}");
+        return site_url("/estados/form/{$this->id}");
     }
     function returnPage()
     {
-        return site_url("catalogs/process/states/");
+        return site_url("/estados/all");
         
     }
     

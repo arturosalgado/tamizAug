@@ -102,7 +102,7 @@ class UnitModel extends ParentModel
     }
     function returnPage()
     {
-        return site_url("catalogs/process/units/");
+        return site_url("units/all/");
         
     }
     function viewPath()
@@ -116,4 +116,7 @@ class UnitModel extends ParentModel
         return site_url("units/form");
         
     }
+    
+    
+    
 }

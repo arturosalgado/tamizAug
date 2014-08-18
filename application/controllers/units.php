@@ -8,20 +8,32 @@ class units extends MY_Controller{
     }
     
     
-    function form($id = null)
-    {
-        
-        $this->id = $id;
-        $this->index();
-                
-    }    
+   
     
     function Content()
     {
-       $model = new UnitModel($this->id); 
+       $model = new UnitModel(); 
        $data['record']=$model; 
         
-       return $this->load->view("admin/catalogs/units/edit",$data,true);
+       if ($this->view=='form')
+       {
+            $t = new UnitModel();
+            $t->where('id',  $this->id)->get();
+            $data['record']=$t;
+           
+            return $this->load->view("{$this->theme}/units/edit",$data,true);
+       }
+       else
+       {
+            $s = new UnitModel();
+            $data['record']=$s;
+            
+            $all = $s->get()->all;
+            $data['all']=$all;
+            
+            return $this->load->view("{$this->theme}/units/list",$data,true);
+       }
+        
         
     }
             

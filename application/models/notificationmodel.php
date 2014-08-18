@@ -1,11 +1,13 @@
 <?php
 
 
-class TamizModel extends ParentModel
+class NotificationModel extends ParentModel
 {
     
-    public  $table = 'tamiz';
-    public  $has_many = array('estadomodel');
+    public  $table = 'notifications';
+  
+    
+    protected  $ViewPath = 'notifications';
             
     function __construct($id = NULL) {
         parent::__construct($id);
@@ -253,7 +255,7 @@ class TamizModel extends ParentModel
              cp,
              telefono,
              tecnica,
-             CONCAT_WS(' ',usuarios.paterno,usuarios.materno,usuarios.nombre) as responsable,
+             CONCAT_WS(' ',users.paterno,users.materno,users.nombre) as responsable,
              estatus,
              malformacion,
              ths,
@@ -276,9 +278,9 @@ class TamizModel extends ParentModel
             
              FROM tamiz
              
-             LEFT JOIN usuarios 
+             LEFT JOIN users 
              ON 
-             usuarios.id = responsable_id
+             users.id = responsable_id
 
              ";
         $r = $this->db->query($q);
@@ -320,14 +322,14 @@ class TamizModel extends ParentModel
     
     function editLink($label = '')
     {
-        return site_url("tamiz/form/{$this->id}");
+        return site_url("{$this->viewPath()}/form/{$this->id}");
     }
     
     
     function newLink()
     {
         
-        return site_url("tamiz/form/");
+        return site_url("/users/form/");
         
     }
     
@@ -349,19 +351,44 @@ class TamizModel extends ParentModel
         return site_url('tamiz/search/');
     }
     
+    
+    function getFormUpdateAction()
+    {
+        
+        return site_url("{$this->ViewPath}/update/{$this->id}");
+    }
+    
     function save($object = '', $related_field = '') {
         
-        if ($this->ths=='sospechoso')
-        {
-           $n = new NotificationModel();
-           $n->where('tamiz_id',  $this->id);
-           $n->get(1);
-           if (empty($n->id)){
-               
-               $n->tamiz_id = $this->id;
-               $n->save();
-           }
-          // die("sospechoso");
+      
+        if (true){
+        $this->CI->load->library('email');
+
+        $this->CI->email->from('admin@walkley21.com', 'Hermes');
+   
+        $unit_mails = new UnitModel();
+        $u = $unit_mails->mail_list();
+        $estado = new EstadoModel();
+        $e = $estado->mail_list();
+        $l = new LaboratoryModel();
+        $labs = $l->mail_list();
+        
+        $u = array_merge($u,$e);
+        $u = array_merge($u,$labs);
+        
+        //print_r($u);
+        
+        
+        $this->CI->email->to($u); 
+   
+        
+       
+
+        $this->CI->email->subject('caso sospechoso identificado');
+        $this->CI->email->message('Testing the email class.');	
+        //die();
+        $this->CI->email->send();
+        //echo $this->CI->email->print_debugger();
         }
         
         parent::save($object, $related_field);

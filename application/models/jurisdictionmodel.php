@@ -98,15 +98,15 @@ class JurisdictionModel extends ParentModel
     
     function editLink(){
         
-        return site_url("catalogs/edit/jurisdictionmodel/{$this->id}");
+        return site_url("jurisdictions/form/{$this->id}");
     }
     function returnPage()
     {
-        return site_url("catalogs/process/jurisdiction/");
+        return site_url("jurisdictions/all/");
         
     }
     function newLink() {
-        return site_url("catalogs/edit/jurisdictionmodel/");
+        return site_url("jurisdictions/form/");
     }
     function viewPath()
     {

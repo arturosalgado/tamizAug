@@ -10,9 +10,9 @@
 			
 			<!-- PAGE HEADER -->
 			<i class="fa-fw fa fa-pencil-square-o"></i> 
-				Forms
+				Tamiz
 			<span>>  
-				Form Layouts
+				Importar
 			</span>
 		</h1>
 	</div>
@@ -54,7 +54,7 @@
                         -->
                         <header>
                                 <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                                <h2>Registration form </h2>				
+                                <h2>Importar archivo CSV </h2>				
 
                         </header>
 
@@ -73,7 +73,7 @@
 
                                     <form method="post" enctype="multipart/form-data" action="<?php echo site_url('/tamiz/importfile/')?>" id="order-form" class="smart-form" novalidate="novalidate">
                                                 <header>
-                                                        Order services
+                                                       CVS
                                                 </header>
 
 
@@ -89,11 +89,7 @@
                                                                 </div>
                                                         </section>
 
-                                                        <section>
-                                                                <label class="textarea"> <i class="icon-append fa fa-comment"></i> 										
-                                                                        <textarea rows="5" name="comment" placeholder="Tell us about your project"></textarea> 
-                                                                </label>
-                                                        </section>
+                                                       
                                                 </fieldset>
                                                 <footer>
                                                         <button type="submit" class="btn btn-primary">

@@ -47,7 +47,7 @@
                                 -->
                                 <header>
                                         <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                                        <h2>Column Filters </h2>
+                                        <h2s> </h2s>
 
                                 </header>
 
@@ -71,23 +71,7 @@
 <tr>
      
         <th class="hasinput" colspan="10" style="width:17%">
-        <form id="search-form" method="post" action="<?php echo "" ?>" >
-            <input value="<?php echo ''; ?>" name="folio" style="display: block;width: 160px;margin-right:10px;float:left;" type="text" class="form-control" placeholder="Filtrar por folio" />
-            <input value="<?php echo ''; ?>" name="nombre"style="display: block;width: 300px;margin-right:10px;float:left;" type="text" class="form-control" placeholder="Filtrar por nombre" />
-            
-            <input value="<?php echo ''; ?>" name="inicio" style="margin-right: 0px;display: block;width: 200px;float:left;"  id="dateselect_filter" type="text" placeholder="Desde" class="form-control datepicker" data-dateformat="yy/mm/dd">
-          
-            <label style="margin-right:0px;display: block;top:-4px;left:-30px;float:left;"for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Filter Date"></label>                
-            
-             
-            <input value="<?php echo ''; ?>"name="fin" style="margin-right: 0px;display: block;width: 200px;float:left;"  id="dateselect_filter1" type="text" placeholder="Hasta" class="form-control datepicker" data-dateformat="yy/mm/dd">
-          
-            
-            <label style="top:-4px;left:-30px;display: block;float:left;"for="dateselect_filter1" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Filter Date"></label>                
-              
-            <input style="width: 80px;" type="submit" value="buscar" name="" class="btn btn-default">
-            <input id="reset"style="width: 80px;" type="reset" value="limpiar" name="" class="btn btn-default">
-        </form>    
+       
         </th>
          
       
@@ -102,9 +86,9 @@
                                                   
                                                     
                                                     <th>Nombre</th>
-                                                    <th data-hide="phone,tablet">Modificado</th>
+                                                    <th data-hide="phone,tablet">Email</th>
                                                     <th data-hide="phone,tablet">Creado</th>
-                                                    <th data-hide="phone,tablet">Usuario</th>
+                                                    <th data-hide="phone,tablet">Actualizado</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -120,7 +104,21 @@
                                                                 <?php echo $row->paterno ." ".$row->materno." ".$row->nombre ?>
                                                             </a>
                                                         </td>
-                                                        
+                                                        <td >
+                                                            
+                                                            <?php echo $row->email ?>
+                                                            
+                                                        </td>
+                                                         <td >
+                                                            
+                                                            <?php echo $row->created_on ?>
+                                                            
+                                                        </td>
+                                                         <td >
+                                                            
+                                                            <?php echo $row->updated_on ?>
+                                                            
+                                                        </td>
                                                     </tr>
                                                 <?php endforeach;?>
                                                 </tbody>

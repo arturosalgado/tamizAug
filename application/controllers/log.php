@@ -12,6 +12,8 @@ class log extends MY_Controller
     
     function __construct() {
         parent::__construct();
+        
+     // die("log");
     }
     
     
@@ -23,10 +25,10 @@ class log extends MY_Controller
     function load_page()
     {
         
-        
+       
         $this->data['main_content']= $this->Content();
-        
-        return $this->parser->parse("admin/login",$this->data);
+        $this->data['theme']= base_url()."themes/{$this->theme}";
+        return $this->parser->parse("admin2/login",$this->data);
         
     }
     function out()
@@ -62,7 +64,8 @@ class log extends MY_Controller
         $u->where('email',$email);
         $u->where('password',sha1($salt.$password));
         $u->get(1);
-        if (!empty(intval($u->id)))
+        $id = intval($u->id);
+        if (!empty($id))
         {
             //echo $roles[$u->role_id];die();
             $this->load->library('phpsession');

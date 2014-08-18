@@ -8,23 +8,34 @@ class estados extends MY_Controller{
     }
     
     
-    function form($id = null)
-    {
-        
-        $this->id = $id;
-        $this->index();
-                
-    }    
-    
+  
     function Content()
     {
        $model = new EstadoModel(); 
        $data['record']=$model; 
         
-       return $this->load->view("admin/states/edit",$data,true);
+       if ($this->view=='form')
+       {
+            $t = new EstadoModel();
+            $t->where('id',  $this->id)->get();
+            $data['record']=$t;
+           
+            return $this->load->view("{$this->theme}/states/edit",$data,true);
+       }
+       else
+       {
+            $s = new EstadoModel();
+            $data['record']=$s;
+            
+            $all = $s->get()->all;
+            $data['all']=$all;
+            
+            return $this->load->view("{$this->theme}/states/list",$data,true);
+       }
         
     }
-            
+        
+    
     
     
 }
