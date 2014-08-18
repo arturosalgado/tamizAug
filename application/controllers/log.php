@@ -44,6 +44,11 @@ class log extends MY_Controller
     function authenticate()
     {
         
+        $salt = 'abczyx';
+        
+        /*
+         * TODO ADD TOKEN TO VERIFY WE COME FROM THE SAME SITE
+         */
         $email    = $this->input->post('email');
         $password = $this->input->post('password');
         $roles[1]="Administrador";
@@ -55,7 +60,7 @@ class log extends MY_Controller
         
         $u = new UserModel();
         $u->where('email',$email);
-        $u->where('password',$password);
+        $u->where('password',sha1($salt.$password));
         $u->get(1);
         if (!empty(intval($u->id)))
         {
@@ -63,7 +68,7 @@ class log extends MY_Controller
             $this->load->library('phpsession');
             $this->phpsession->set("user",$email);
             $this->phpsession->set("role",$roles[$u->role_id]);
-            $this->phpsession->set("Name",$u->nombre);
+            $this->phpsession->set("name",$u->nombre);
             redirect(site_url()); 
         }
         

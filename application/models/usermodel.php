@@ -6,6 +6,8 @@ class UserModel extends ParentModel
     
     public  $table = 'users';
     public  $has_many = array('estadomodel');
+    public  $has_one = array('rolemodel');
+    
     protected  $ViewPath = 'users';
             
     function __construct($id = NULL) {

@@ -7,11 +7,15 @@ class home extends MY_Controller {
         parent::__construct();
     }
     
-    
+    function checkRol() {
+       
+    }
     function Content()
     {
+        $data["s"]='s';
+        return $this->load->view("{$this->theme}/home/home",$data,true);
         
-        return $this->load->view("admin/home_view",$this->data,true);
+        
         
     }
     function getControllerName() {

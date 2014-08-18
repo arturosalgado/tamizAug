@@ -156,7 +156,7 @@
 
 				<!-- logout button -->
 				<div id="logout" class="btn-header transparent pull-right">
-                                    <span> <a href="<?php echo site_url('log/out')?>" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
+                                    <span> <a href="<?php echo site_url('log/out')?>" title="Salir" data-action="userLogout" data-logout-msg=""><i class="fa fa-sign-out"></i></a> </span>
 				</div>
 				<!-- end logout button -->
 
@@ -167,30 +167,8 @@
 				<!-- end search mobile button -->
 
 				<!-- input: search field -->
-				<form action="search.html" class="header-search pull-right">
-					<input id="search-fld"  type="text" name="param" placeholder="Buscar " data-autocomplete='[
-					"ActionScript",
-					"AppleScript",
-					"Asp",
-					"BASIC",
-					"C",
-					"C++",
-					"Clojure",
-					"COBOL",
-					"ColdFusion",
-					"Erlang",
-					"Fortran",
-					"Groovy",
-					"Haskell",
-					"Java",
-					"JavaScript",
-					"Lisp",
-					"Perl",
-					"PHP",
-					"Python",
-					"Ruby",
-					"Scala",
-					"Scheme"]'>
+                                <form action="<?php echo site_url('tamiz/searchbyfolio/folio') ?>"  method="post" class="header-search pull-right">
+					<input id="search-fld2"  type="text" name="folio" placeholder="Buscar por Folio " >
 					<button type="submit">
 						<i class="fa fa-search"></i>
 					</button>
@@ -279,53 +257,10 @@
 		<div class="page-footer">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6">
-					<span class="txt-color-white">SmartAdmin WebApp © 2013-2014</span>
+					<!--span class="txt-color-white">SmartAdmin WebApp © 2013-2014</span-->
 				</div>
 
-				<div class="col-xs-6 col-sm-6 text-right hidden-xs">
-					<div class="txt-color-white inline-block">
-						<i class="txt-color-blueLight hidden-mobile">Last account activity <i class="fa fa-clock-o"></i> <strong>52 mins ago &nbsp;</strong> </i>
-						<div class="btn-group dropup">
-							<button class="btn btn-xs dropdown-toggle bg-color-blue txt-color-white" data-toggle="dropdown">
-								<i class="fa fa-link"></i> <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu pull-right text-left">
-								<li>
-									<div class="padding-5">
-										<p class="txt-color-darken font-sm no-margin">Download Progress</p>
-										<div class="progress progress-micro no-margin">
-											<div class="progress-bar progress-bar-success" style="width: 50%;"></div>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="padding-5">
-										<p class="txt-color-darken font-sm no-margin">Server Load</p>
-										<div class="progress progress-micro no-margin">
-											<div class="progress-bar progress-bar-success" style="width: 20%;"></div>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="padding-5">
-										<p class="txt-color-darken font-sm no-margin">Memory Load <span class="text-danger">*critical*</span></p>
-										<div class="progress progress-micro no-margin">
-											<div class="progress-bar progress-bar-danger" style="width: 70%;"></div>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="padding-5">
-										<button class="btn btn-block btn-default">refresh</button>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 		<!-- END PAGE FOOTER -->
@@ -936,21 +871,21 @@
                         ////////////
                         
                         
-                     $("#save-form").click(function(){
+                     $(".save-form").click(function(){
                          //alert('save')
                          
                          $("#saveType").attr("value","save");
                          $('#form-tamiz').submit();
                          
                      });
-                     $("#save-form-list").click(function(){
+                     $(".save-form-list").click(function(){
                          
                          //alert('list')
                          $("#saveType").attr("value","save-list");
                          $('#form-tamiz').submit();
                          
                      });   
-                      $("#save-new").click(function(){
+                      $(".save-new").click(function(){
                          
                          //alert('list')
                          $("#saveType").attr("value","save-new");
@@ -960,7 +895,7 @@
                         
                      
             
-                    $("#reset").click(function(){
+                    $(".reset").click(function(){
                        $('#search-form').find(':input.form-control').each(function(){
                                 $(this).val('');
                         });

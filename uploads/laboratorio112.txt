@@ -1,0 +1,3 @@
+5221, laboratorios ruiz, 1,  0.55, 0,1.55,1,55,0,0.55
+5222, laboratorios ruiz, 1,  0.55, 0,1.55,1,55,0,0.55
+5223, laboratorios ruiz, 1,  0.55, 0,1.55,1,55,0,0.55

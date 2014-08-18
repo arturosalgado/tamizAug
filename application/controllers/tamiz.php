@@ -8,10 +8,10 @@ class tamiz extends MY_Controller{
     private $search_folio = '';
     private $search_inicio = '';
     private $search_fin = '';
-    
+    protected $ViewPath='tamiz';
     protected $offset = 0;
     protected $limit = 20;
-    protected  $roles= array("Capturista");
+    protected  $roles= array("Capturista","Administrador",'Laboratorio');
     function __construct() {
         parent::__construct();
         $this->checkRol();
@@ -28,29 +28,62 @@ class tamiz extends MY_Controller{
      function checkRol()
     {
        $user_role = $this->phpsession->get('role');
-       echo "<h1>$user_role</h1>";
+       //ECHO "$user_role";
        if (!in_array($user_role,  $this->roles))
        {
-          // redirect(site_url('log/in'));
+          redirect(site_url('home'));
        }
     }
     
-    function Content()
+    function searchbyfolio($folio='')
+    {
+        $folio = $this->input->post('folio');
+        $this->phpsession->set("search_folio",$folio);
+        $t = new TamizModel();
+        $t->where('folio',$folio);
+        $t->get(1);
+        if (!empty($t->id))
+         redirect (site_url('tamiz/form/'.$t->id));   
+        else
+        {
+            
+        }
+        
+    }
+    
+    function Content($role  = NULL)
     {
        $this->search_name = $this->phpsession->get("tamiz_search_name"); 
        $this->search_folio = $this->phpsession->get("tamiz_search_folio"); 
        $this->search_inicio = $this->phpsession->get("tamiz_search_inicio"); 
        $this->search_fin =    $this->phpsession->get("tamiz_search_fin"); 
        
-        
-       if ($this->view=='form') {
+        if ($this->view =='import')
+        {
+           return $this->load->view("{$this->theme}/{$this->ViewPath}/import",$this->data,true);
+        }
+       
+       
+       else if ($this->view=='form') {
        //echo " id ".$this->id;
        $t = new TamizModel($this->id);    
        $t->where('id',  $this->id)->get(1);
       
       
-       $this->data['record']=$t;    
-       return  $this->load->view("{$this->theme}/tamiz/form",  $this->data,true);     
+       $this->data['record']=$t;  
+       
+       switch ($role)
+       {
+           
+           case 'Laboratorio':
+           {
+                return $this->load->view("{$this->theme}/laboratorio/tamiz/form",  $this->data,true);  
+           }
+           default :
+                return $this->load->view("{$this->theme}/tamiz/form",  $this->data,true);  
+       }
+       
+      
        }
        else
        {    
@@ -101,7 +134,19 @@ class tamiz extends MY_Controller{
            $this->data['search_fin']=  $this->search_fin;
            
            
-           return  $this->load->view("{$this->theme}/tamiz/list_view",  $this->data,true);  
+           switch ($role)
+       {
+           
+           case 'Laboratorio':
+           {
+               return  $this->load->view("{$this->theme}/laboratorio/tamiz/list_view",  $this->data,true);  
+           }
+           default :
+               return  $this->load->view("{$this->theme}/tamiz/list_view",  $this->data,true);  
+       }
+           
+           
+           
         
        } 
         
@@ -126,6 +171,9 @@ class tamiz extends MY_Controller{
         
         $t = new TamizModel($id);
         
+        $h = new TamizHistoryModel();  
+        $h->clone_me($t,$_POST); 
+        
         
         $_POST['fechadenacimiento']= $this->formatdate($_POST['fechadenacimiento']);
         $_POST['fechademuestra']= $this->formatdate($_POST['fechademuestra']);
@@ -141,7 +189,11 @@ class tamiz extends MY_Controller{
         if ($id ==null and !$this->folioExist($t->folio)) // id null==first time save
         $t->save();
         else if ($id!=null) {
+            
+          
+          $h->save();//save previous 
           $t->save();// just an update
+          
         }
             
         
@@ -244,4 +296,126 @@ class tamiz extends MY_Controller{
         echo 0;
     }
 
+    function import()
+    {
+        $data["a"]="a";
+        $this->view = 'import';
+        $this->index();
+        
+        
+        
+    }
+    
+    
+    function importfile()
+    {
+        
+        print_r($_FILES);
+     
+        $config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'csv|txt';
+		$config['max_size']	= '1000';
+		$config['max_width']  = '1024';
+		$config['max_height']  = '768';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$error = array('error' => $this->upload->display_errors());
+
+			print_r($error);
+		}
+		else
+		{
+			$data = $this->upload->data();
+                      
+			$this->readFileContents($data['full_path']);
+                                
+		}
+        
+    }
+    
+    function readFileContents($filename)
+    {
+        $lines = file($filename); // gets file in array using new lines character
+        $reference [1]='Normal';
+        $reference [0]='Normal';
+        $reference [2]='Sospechoso';
+        foreach($lines as $line)
+        {
+           $line = trim($line); 
+           if (empty($line)) continue;
+           $temparr = explode(',',$line);
+           $this->trim_all($temparr);
+           
+           
+           
+           $t = new TamizModel();
+           $folio = $temparr[0];
+           $laboratorio = $temparr[1];
+           $ths = $reference[$temparr[2]];
+           $ths_valor = $temparr[3];
+           
+           $_17oh = $reference[$temparr[4]];
+           $_17oh_valor = $temparr[5];
+           
+           $gal = $reference[$temparr[6]];
+           $gal_valor = $temparr[7];
+           
+           $pku = $reference[$temparr[8]];
+           $pku_valor = $temparr[9];
+           
+           
+           $t->where('folio',$folio)->get(1);
+           
+           if (!empty($t->id))
+           {    
+                $t->folio= $folio;
+                $t->laboratorio= $laboratorio;
+                
+                $t->ths = $ths;
+                $t->ths_valor = $ths_valor;
+                
+                $t->oh17 = $_17oh;
+                $t->oh17_valor = $_17oh_valor;
+                
+                $t->gal = $gal;
+                $t->gal_valor = $gal_valor;
+                $t->pku = $pku;
+                $t->pku_valor = $pku_valor;
+                
+                
+                $t->save();
+           }
+           else
+           {
+                $t->folio= $folio;
+                $t->laboratorio= $laboratorio;
+                
+                $t->ths = $ths;
+                $t->ths_valor = $ths_valor;
+                
+                $t->oh17 = $_17oh;
+                $t->oh17_valor = $_17oh_valor;
+                
+                $t->gal = $gal;
+                $t->gal_valor = $gal_valor;
+                $t->pku = $pku;
+                $t->pku_valor = $pku_valor;
+                $t->save();
+           }
+           
+           
+        } 
+        redirect('tamiz/all/');
+    }
+    function trim_all(& $array)
+    {
+        foreach($array as $k=> $value)
+        {
+            $array[$k]= trim($value);
+        }
+    }
+    
 }

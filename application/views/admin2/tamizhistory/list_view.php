@@ -1,37 +1,7 @@
-<div class="row">
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-		<h1 class="page-title txt-color-blueDark">
-			
-			<!-- PAGE HEADER -->
-			<i class="fa-fw fa fa-pencil-square-o"></i> 
-				Forms
-			<span>>  
-				Form Layouts
-			</span>
-		</h1>
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-9">
-        <ul id="sparks" class="">
-                <li class="sparks-info">
-                    <input id="smart-mod-eg1" type="button" value="Regresar sin Guardar"  />
-                </li>
-                <li class="sparks-info">
-                    <input type="button" class="save-form" value="Guardar"  />
-                    
-                </li>
-                <li class="sparks-info">
-                    <input type="button" class="save-new" value="Guardar y Nuevo"  />
-                </li>
-                <li class="sparks-info">
-                    <input type="button" class="save-form-list" value="Guardar e ir al Listado"  />
-                </li>
-        </ul>
-	</div>
-	
-</div>
 
 
 
+<?php foreach ($all as $record):?>
 <section id="widget-grid" class="">
 
         <!-- START ROW -->
@@ -485,30 +455,8 @@
 
 </section>
 
+<?php endforeach;?>
 
-<div class="row">
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-		<!-- place hholder -->
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-9">
-        <ul id="sparks" class="">
-                <li class="sparks-info">
-                    <input id="smart-mod-eg1" type="button" value="Regresar sin Guardar"  />
-                </li>
-                <li class="sparks-info">
-                    <input type="button" class="save-form" value="Guardar"  />
-                    
-                </li>
-                <li class="sparks-info">
-                    <input type="button" class="save-new" value="Guardar y Nuevo"  />
-                </li>
-                <li class="sparks-info">
-                    <input type="button" class="save-form-list" value="Guardar e ir al Listado"  />
-                </li>
-        </ul>
-	</div>
-	
-</div>
 
 <!-- widget grid -->
 

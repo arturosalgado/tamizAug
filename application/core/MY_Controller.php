@@ -2,7 +2,7 @@
 
 
 
-class MY_Controller extends CI_Controller
+abstract class MY_Controller extends CI_Controller
 {
     
     
@@ -16,24 +16,32 @@ class MY_Controller extends CI_Controller
     protected $theme = 'admin2';
     function __construct() {
         parent::__construct();
+        
+        
+        
         $c = $this->getControllerName();
         
        
         if ($c!='log')
         $this->checkSession();
         
-       // $this->checkRol();
+        $this->checkRol();
         
         
     }
     
     
+    function checkRol(){
+       
+    }
+    
             
     function load_page()
     {
+        $role = $this->phpsession->get("role");
         
         $this->data['navigation']= $this->Navigation();
-        $this->data['main_content']= $this->Content();
+        $this->data['main_content']= $this->Content($role);
         $this->data['theme']= base_url()."/themes/{$this->theme}/";
         return $this->parser->parse("{$this->theme}/layout",$this->data);
         
@@ -52,9 +60,9 @@ class MY_Controller extends CI_Controller
       
         
         $this->load->library('phpsession');
-         echo "<pre>";
-       print_r($_SESSION);
-       echo "</pre>";
+//         echo "<pre>";
+//       print_r($_SESSION);
+//       echo "</pre>";
         $user = $this->phpsession->get('user');
         
         
@@ -73,6 +81,9 @@ class MY_Controller extends CI_Controller
     {
         $data['theme']=  $this->theme;
         $data['menu']=  $this->Menu();
+        $data['name']= $this->phpsession->get("name");
+        $data['role']= $this->phpsession->get("role");
+        
         return $this->load->view("{$this->theme}/navigation",$data,true);
     }
     
@@ -131,14 +142,22 @@ class MY_Controller extends CI_Controller
         
         $index = 0;
         $menu[$index]['label']="Tamiz";
-        $menu[$index]['roles']=array("Administrador","Capturista");
-            $menu[$index]['items'][0]['label']='listado';
+        $menu[$index]['roles']=array("Administrador","Capturista","Laboratorio");
+            $menu[$index]['items'][0]['label']='Listado';
             $menu[$index]['items'][0]['url']=  'tamiz/all/';
             $menu[$index]['items'][0]['active']= $this->is_active($menu[$index]['items'][0]['url']);
 
-            $menu[$index]['items'][1]['label']='nuevo';
+            
+            $menu[$index]['items'][1]['role']=array("Administrador","Capturista");
+            $menu[$index]['items'][1]['label']='Nuevo';
             $menu[$index]['items'][1]['url']='tamiz/form/';
             $menu[$index]['items'][1]['active']=$this->is_active($menu[$index]['items'][1]['url']);
+            
+            $menu[$index]['items'][2]['role']=array("Administrador","Capturista");
+            $menu[$index]['items'][2]['label']='Importar';
+            $menu[$index]['items'][2]['url']='tamiz/import/';
+            $menu[$index]['items'][2]['active']=$this->is_active($menu[$index]['items'][2]['url']);
+            
             
         $index++;
         $menu[$index]['roles']=array("Administrador");   
@@ -219,7 +238,7 @@ class MY_Controller extends CI_Controller
         
         
         $user_role=  $this->phpsession->get('role');
-        echo "<h1>$user_role</h1>";
+        //echo "<h1>$user_role</h1>";
         $ul = new Ul();
         foreach($menu as $item)
         {
@@ -229,19 +248,25 @@ class MY_Controller extends CI_Controller
            }
             
             
-           $ul->add($this->MenuItem($item['label'],$item['items']));
+           $ul->add($this->MenuItem($item['label'],$item['items'],$user_role));
         }
         
         return $ul;
     }
     
-    function MenuItem($label,$items)
+    function MenuItem($label,$items,$role='')
     {   
+       //echo "role is [$role]";
        
-        $user_role = 'Capturista';
+       
         $lis ='';
         foreach ($items as $k =>$item)
         {
+           //print_R($item['role']);
+            
+            if (isset($item['role']) and !in_array($role, $item['role']))
+            continue;        
+            
             
             $active = '';
            if ($item['active']==1)

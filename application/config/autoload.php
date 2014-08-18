@@ -53,7 +53,7 @@ $autoload['packages'] = array();
 */
 
 //$autoload['libraries'] = array();
-$autoload['libraries'] = array('database', 'datamapper','parser');
+$autoload['libraries'] = array('database', 'datamapper','parser','phpsession');
 
 /*
 | -------------------------------------------------------------------

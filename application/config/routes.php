@@ -38,8 +38,8 @@
 |
 */
 
-$route['default_controller'] = "tamiz";
-$route['404_override'] = 'tamiz';
+$route['default_controller'] = "home";
+$route['404_override'] = 'home';
 
 
 /* End of file routes.php */

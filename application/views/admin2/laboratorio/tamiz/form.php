@@ -12,16 +12,15 @@
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-9">
         <ul id="sparks" class="">
-                <li class="sparks-info">
-                    <input id="smart-mod-eg1" type="button" value="Regresar sin Guardar"  />
-                </li>
+               
+                
                 <li class="sparks-info">
                     <input type="button" class="save-form" value="Guardar"  />
                     
                 </li>
-                <li class="sparks-info">
-                    <input type="button" class="save-new" value="Guardar y Nuevo"  />
-                </li>
+                <!--li class="sparks-info">
+                    <input type="button" id="save-new" value="Guardar y Nuevo"  />
+                </li-->
                 <li class="sparks-info">
                     <input type="button" class="save-form-list" value="Guardar e ir al Listado"  />
                 </li>
@@ -75,7 +74,7 @@
                                         <div class="widget-body no-padding">
 
     <form id="form-tamiz" class="smart-form" method="post" action="<?php echo site_url('/tamiz/update').'/'.$record->id; ?>">
-     <fieldset>  
+    <fieldset>  
          <input name="saveType" id="saveType"  type="hidden"> 
          <input name="id" id="current-id" value="<?php echo $record->id?>"  type="hidden" > 
     <div class="row">
@@ -83,7 +82,7 @@
                         Unidad donde se toma la muestra
                         <label class="input" >
                              
-                          <input class="form-control ui-autocomplete-input required" 
+                          <input readonly="readonly" class="form-control ui-autocomplete-input required" 
                                   name="unidad_clinica"
                                   id="unidad_clinica"
                                   required="required"
@@ -102,7 +101,8 @@
                         <label class="input">
                             
                            
-                      <input class="form-control ui-autocomplete-input" 
+                      <input readonly="readonly"
+                             class="form-control ui-autocomplete-input" 
                              name="unidad_jurisdiccion"
                              id="jurisdiccion"
                                required="required"
@@ -119,7 +119,7 @@
                 <section class="col col-3">
                         Estado 
                         <label class="input">
-                            <input id="estados" name="estado_clinica" value="<?php echo $record->estado_clinica; ?>" class="form-control ui-autocomplete-input" placeholder="" type="text" data-autocomplete=
+                            <input readonly="readonly" id="estados" name="estado_clinica" value="<?php echo $record->estado_clinica; ?>" class="form-control ui-autocomplete-input" placeholder="" type="text" data-autocomplete=
                          '<?php echo $record->toJsonNameList('estadomodel'); ?>' autocomplete="off" />
                             <script>
                               var estados = <?php echo $record->toJsonNameList('estadomodel'); ?>;
@@ -131,7 +131,7 @@
                 <section class="col col-3">
                         Folio 
                         <label class="input">
-                            <input id="folio" name = "folio" type="text" value="<?php echo $record->folio ?>">
+                            <input readonly="readonly" id="folio" name = "folio" type="text" value="<?php echo $record->folio ?>">
                         </label>
                 </section>
      </div>  
@@ -144,7 +144,7 @@
                         
 
                         <label class="input"> <i class="icon-append fa fa-calendar"></i>
-                                <input type="text" name="fechadenacimiento"  value="<?php echo ($record->fechadenacimiento==null)?date('d/m/Y'):$record->getFechadenacimiento(); ?>" id="startdate" placeholder=""  >
+                                <input readonly="" type="text" name="fechadenacimiento"  value="<?php echo ($record->fechadenacimiento==null)?date('d/m/Y'):$record->getFechadenacimiento(); ?>" id="startdateNO" placeholder=""  >
                         </label>
 
                        
@@ -154,7 +154,7 @@
                  <section class="col col-1">
                        Hora
                         <label class="input">
-                            <input type="text" placeholder="00:00" name="horanacimiento" value="<?php echo $record->horanacimiento?>" >
+                            <input readonly="readonly" type="text" placeholder="00:00" name="horanacimiento" value="<?php echo $record->horanacimiento?>" >
                         </label>
                 </section>
              
@@ -162,14 +162,15 @@
                       
                     
                     Sexo
+                    <!-- disabling by puttin the name to empty -->
                     <label class="radio">
-                        <input type="radio" name="sexo" value="Masculino" <?php if($record->sexo=='Masculino') echo 'checked' ?> >
+                        <input readonly="readonly" disabled="disabled" type="radio" name="" value="Masculino" <?php if($record->sexo=='Masculino') echo 'checked' ?> >
                             <i></i>Masculino</label>
                     <label class="radio">
-                        <input type="radio" name="sexo" value="Femenino" <?php if($record->sexo=='Femenino') echo 'checked' ?>  >
+                        <input readonly="readonly" disabled="disabled" type="radio" name="" value="Femenino" <?php if($record->sexo=='Femenino') echo 'checked' ?>  >
                             <i></i>Femenino</label>
                     <label class="radio">
-                        <input type="radio" name="sexo" value="Ambiguedad" <?php if($record->sexo=='Ambiguedad') echo 'checked' ?>  >
+                        <input readonly="readonly" disabled="disabled" type="radio" name="" value="Ambiguedad" <?php if($record->sexo=='Ambiguedad') echo 'checked' ?>  >
                             <i></i>Ambiguedad Genital
                     </label>
 														
@@ -182,13 +183,13 @@
                     
                     Edad Gestacional
                     <label class="radio">
-                            <input type="radio" name="edadgestacional"  value="pretermino" <?php if($record->edadgestacional=='pretermino') echo 'checked' ?>  >
+                            <input readonly="readonly" disabled="disabled"  type="radio" name=""  value="pretermino" <?php if($record->edadgestacional=='pretermino') echo 'checked' ?>  >
                             <i></i>Pre-término</label>
                     <label class="radio">
-                            <input type="radio" name="edadgestacional" value="termino"  <?php if($record->edadgestacional=='termino') echo 'checked' ?> >
+                            <input readonly="readonly" disabled="disabled"  type="radio" name="" value="termino"  <?php if($record->edadgestacional=='termino') echo 'checked' ?> >
                             <i></i>Término</label>
                     <label class="radio">
-                            <input type="radio" name="edadgestacional" value="posttermino"  <?php if($record->edadgestacional=='posttermino') echo 'checked' ?>  >
+                            <input readonly="readonly" disabled="disabled"  type="radio" name="" value="posttermino"  <?php if($record->edadgestacional=='posttermino') echo 'checked' ?>  >
                             <i></i>Post-término
                     </label>
 														
@@ -201,12 +202,12 @@
                     
                    Producto 
                     <label class="radio">
-                        <input type="radio" name="producto" value="unico"  <?php if ($record->producto=='unico')echo 'checked' ?>  >
+                        <input disabled="disable" readonly="readonly" type="radio" name="" value="unico"  <?php if ($record->producto=='unico')echo 'checked' ?>  >
                             <i></i>Único</label>
                     <label class="radio">
-                            <input type="radio" name="producto" value="gemelo" <?php if ($record->producto=='gemelo')echo 'checked' ?>   >
+                            <input disabled="disable" readonly="readonly"  type="radio" name="producto" value="gemelo" <?php if ($record->producto=='gemelo')echo 'checked' ?>   >
                             <i></i>Numero de Gemelo </label>
-                   <input size="3" style="width:40px; "value="<?php echo $record->numerodegemelo; ?>" name="numerodegemelo" type="number" step="1" min="1" max="7">
+                   <input disabled="disable" readonly="readonly"  size="3" style="width:40px; "value="<?php echo $record->numerodegemelo; ?>" name="numerodegemelo" type="number" step="1" min="1" max="7">
                    
                     
 														
@@ -217,11 +218,11 @@
                 <section class="col col-2">
                         Peso al nacer (grs)
                         <label class="input">
-                            <input type="text" name="peso" value="<?php echo $record->peso ?>">
+                            <input disabled="disable" readonly="readonly"  type="text" name="peso" value="<?php echo $record->peso ?>">
                         </label>
                         Talla (cm)
                         <label class="input">
-                            <input type="text" name="talla" value="<?php echo $record->talla ?>">
+                            <input disabled="disable" readonly="readonly"  type="text" name="talla" value="<?php echo $record->talla ?>">
                         </label>
                 </section>
      </div>  
@@ -229,14 +230,14 @@
                 <section class="col col-2">
                        Toma de muestra
                         <label class="input">
-                            <input type="text" name="fechademuestra" value="<?php echo ($record->fechademuestra==null)?date('d/m/Y'):$record->getFechademuestra(); ?>"  placeholder="dd/mm/aaaa"  >
+                            <input disabled="disable" readonly="readonly"  type="text" name="" value="<?php echo ($record->fechademuestra==null)?date('d/m/Y'):$record->getFechademuestra(); ?>"  placeholder="dd/mm/aaaa"  >
                         </label>
                 </section>
              
                  <section class="col col-1">
                        Hora 
                         <label class="input">
-                            <input type="text" name="horamuestra" placeholder="00:00" value="<?php echo $record->horamuestra?>" >
+                            <input disabled="disable" readonly="readonly" type="text" name="" placeholder="00:00" value="<?php echo $record->horamuestra?>" >
                         </label>
                 </section>
              
@@ -245,14 +246,14 @@
                     
                   Malformaciones Cong.
                     <label class="radio">
-                        <input type="radio" name="malformacion" value="no"   <?php if ($record->malformacion=='no') echo 'checked' ?>  >
+                        <input disabled="disable" readonly="readonly"  type="radio" name="malformacion" value="no"   <?php if ($record->malformacion=='no') echo 'checked' ?>  >
                             <i></i>No</label>
                     <label class="radio">
-                        <input type="radio" name="malformacion" value="si"  <?php if ($record->malformacion=='si') echo 'checked' ?> >
+                        <input disabled="disable" readonly="readonly" type="radio" name="malformacion" value="si"  <?php if ($record->malformacion=='si') echo 'checked' ?> >
                             <i></i>Si</label>
                   
                     Cual
-                    <input type="text" name="malformacion_cong"value="<?php echo $record->malformacion_cong?>" size="16"/>														
+                    <input disabled="disable" readonly="readonly" type="text" name="malformacion_cong"value="<?php echo $record->malformacion_cong?>" size="16"/>														
                     
                     
                 </section>
@@ -261,13 +262,13 @@
                       
                   Condiciones RN
                     <label class="radio">
-                        <input type="radio" name="condicion" value="sano" <?php if ($record->condicion=='sano') echo 'checked' ?> >
+                        <input disabled="disable" readonly="readonly"  type="radio" name="condicion" value="sano" <?php if ($record->condicion=='sano') echo 'checked' ?> >
                             <i></i>Sano</label>
                     <label class="radio">
-                            <input type="radio" name="condicion" value="enfermo" <?php if ($record->condicion=='enfermo') echo 'checked' ?>  >
+                            <input disabled="disable" readonly="readonly" type="radio" name="condicion" value="enfermo" <?php if ($record->condicion=='enfermo') echo 'checked' ?>  >
                             <i></i>Enfermo</label>
                     <label class="radio">
-                            <input type="radio" name="condicion" value="cuidadosintensivos" <?php if ($record->condicion=='cuidadosintensivos') echo 'checked' ?>  >
+                            <input disabled="disable" readonly="readonly"  type="radio" name="condicion" value="cuidadosintensivos" <?php if ($record->condicion=='cuidadosintensivos') echo 'checked' ?>  >
                             <i></i>Cuidados Intensivos
                     </label>
 														
@@ -280,17 +281,17 @@
                     
                   Alimentacion del RN
        <label class="radio">
-           <input type="radio" name="alimentacion"  value="lechematerna" <?php if ($record->alimentacion=='lechematerna') echo 'checked' ?>  >
+           <input disabled="disable" readonly="readonly"  type="radio" name=""  value="lechematerna" <?php if ($record->alimentacion=='lechematerna') echo 'checked' ?>  >
                 <i></i>Leche Materna</label>
         <label class="radio">
-            <input type="radio" name="alimentacion" value="formulalactea" <?php if ($record->alimentacion=='formulalactea') echo 'checked' ?>  >
+            <input disabled="disable" readonly="readonly"  type="radio" name="" value="formulalactea" <?php if ($record->alimentacion=='formulalactea') echo 'checked' ?>  >
                 <i></i>Formula Lactea</label>
         <label class="radio">
-            <input type="radio" name="alimentacion" value="mixta" <?php if ($record->alimentacion=='mixta') echo 'checked' ?> >
+            <input disabled="disable" readonly="readonly"  type="radio" name="" value="mixta" <?php if ($record->alimentacion=='mixta') echo 'checked' ?> >
                 <i></i>Mixta</label>
 
 		 <label class="radio">
-                <input type="radio" name="alimentacion" value="ayuno"  <?php if ($record->alimentacion=='ayuno') echo 'checked' ?> >
+                <input disabled="disable" readonly="readonly"  type="radio" name="alimentacion" value="ayuno"  <?php if ($record->alimentacion=='ayuno') echo 'checked' ?> >
                 <i></i>Ayuno</label>												
                     
                     
@@ -308,41 +309,46 @@
                         Apellido paterno
                         <label class="input">
                             <input 
+                                disabled="disable" readonly="readonly" 
                                   required="required"
                                   title='Se requiere esta información'
-                                type="text" name="apellido_paterno" value="<?php echo $record->apellido_paterno ?>" placeholder="">
+                                type="text" name="" value="<?php echo $record->apellido_paterno ?>" placeholder="">
                         </label>
                 </section>
                 <section class="col col-2">
                         Apellido Materno
                         <label class="input">
                             <input 
+                                disabled="disable" readonly="readonly" 
                                  id="apellido_paterno"
                                   required="required"
                                   title='Se requiere esta información'
-                                type="text" name="apellido_materno" value="<?php echo $record->apellido_materno ?>" placeholder="">
+                                type="text" name="" value="<?php echo $record->apellido_materno ?>" placeholder="">
                         </label>
                 </section>
                 <section class="col col-2">
                         Nombre 
                         <label class="input">
                             <input 
+                                  disabled="disable" readonly="readonly" 
                                   required="required"
                                   title='Se requiere esta información'
-                                type="text" name="nombre"  value="<?php echo $record->nombre ?>" placeholder="">
+                                type="text" name=""  value="<?php echo $record->nombre ?>" placeholder="">
                         </label>
                 </section>
                 <section class="col col-1">
                         Edad
                         <label class="input">
-                            <input type="text" placeholder="" name="edadmadre" value="<?php echo $record->edadmadre ?>" >
+                            <input 
+                                disabled="disable" readonly="readonly" 
+                                type="text" placeholder="" name="edadmadre" value="<?php echo $record->edadmadre ?>" >
                         </label>
                 </section>
                 <section class="col col-1">
                         Gesta
                         <label class="select">
                                
-                           <select name="gesta">
+                           <select name="gesta" disabled="disable" readonly="readonly" >
                                  <?php echo  $record->listGesta($record->gesta) ?>
                            </select>     
                         </label>
@@ -352,12 +358,17 @@
                         Enfermedad tiroidea o metabolica
                        
                          <label class="radio">
-           <input type="radio" name="enfermedad" value="no" <?php if ($record->enfermedad=='no') echo 'checked'  ?>  >
+           <input
+                disabled="disable" readonly="readonly" 
+               type="radio" name="" value="no" <?php if ($record->enfermedad=='no') echo 'checked'  ?>  >
                 <i></i>No</label>
         <label class="radio">
-            <input type="radio" name="enfermedad" value="si" <?php if ($record->enfermedad=='si') echo 'checked'  ?>>
+            <input 
+                disabled="disable" readonly="readonly" 
+                
+                type="radio" name="" value="si" <?php if ($record->enfermedad=='si') echo 'checked'  ?>>
                 <i></i>Si</label>
-                        ¿Cual?  <input name="enfermedad_metabolica" value="<?php echo $record->enfermedad_metabolica ?>" />          
+                        ¿Cual?  <input disabled="disable" readonly="readonly"  name="" value="<?php echo $record->enfermedad_metabolica ?>" />          
                 </section>
             
         </div>
@@ -366,25 +377,32 @@
                 <section class="col col-3">
                        Domicilio
                         <label class="input">
-                            <input type="text" name="domicilio" value="<?php echo $record->domicilio; ?>" placeholder="Calle y Numero"/>
+                            <input
+                                disabled="disable" readonly="readonly" 
+                                type="text" name="domicilio" value="<?php echo $record->domicilio; ?>" placeholder="Calle y Numero"/>
                         </label>
                 </section>
                 <section class="col col-2">
                       Colonia o Localidad
                         <label class="input">
-                            <input type="text" placeholder="" name="colonia" value="<?php echo $record->colonia; ?>">
+                            <input 
+                                disabled="disable" readonly="readonly" 
+                                
+                                type="text" placeholder="" name="colonia" value="<?php echo $record->colonia; ?>">
                         </label>
                 </section>
                 <section class="col col-2">
                         Municipio o Delegacion
                         <label class="input">
-                            <input type="text" placeholder="" name="municipio" value="<?php echo $record->municipio ?>">
+                            <input
+                                disabled="disable" readonly="readonly" 
+                                type="text" placeholder="" name="municipio" value="<?php echo $record->municipio ?>">
                         </label>
                 </section>
                 <section class="col col-2">
                         Entidad Federativa
                         <label class="select">
-                            <select name="estado_id">
+                            <select disabled="disable" readonly="readonly"  name="estado_id">
                                 <?php echo $record->listEstados($record->estado_id)?>
                             </select>
                         </label>
@@ -392,14 +410,18 @@
                 <section class="col col-1">
                        C. Postal
                         <label class="input">
-                            <input type="text" placeholder="" name="cp" value="<?php echo $record->cp ?>" >
+                            <input 
+                                disabled="disable" readonly="readonly" 
+                                type="text" placeholder="" name="cp" value="<?php echo $record->cp ?>" >
                         </label>
                 </section>
             
                  <section class="col col-2">
                        Telefono
                        <label class="input">
-                                <input type="text" placeholder="" name="telefono" value="<?php echo $record->telefono ?>" >
+                                <input
+                                    disabled="disable" readonly="readonly" 
+                                    type="text" placeholder="" name="telefono" value="<?php echo $record->telefono ?>" >
                         </label>
                                
                 </section>
@@ -412,10 +434,14 @@
                 <section class="col col-2">
                         Tecnica de toma
                           <label class="radio">
-                              <input type="radio" name="tecnica"  value="Cordon" <?php if ($record->tecnica=='Cordon') echo "checked"?>>
+                              <input
+                                  disabled="disable" readonly="readonly" 
+                                  type="radio" name="tecnica"  value="Cordon" <?php if ($record->tecnica=='Cordon') echo "checked"?>>
                 <i></i>Cordón</label>
         <label class="radio">
-            <input type="radio" name="tecnica" value="Talon" <?php if($record->tecnica=='Talon') echo "checked"?>>
+            <input type="radio"
+                   disabled="disable" readonly="readonly" 
+                   name="tecnica" value="Talon" <?php if($record->tecnica=='Talon') echo "checked"?>>
                 <i></i>Talón</label>
                 </section>
                 <section class="col col-3">
@@ -447,6 +473,100 @@
 
         
 </fieldset>
+        
+        
+    <fieldset style="">
+         <legend>Reporte de Laboratorio</legend>                                                 
+         <div class="row">
+                
+             
+               
+             
+              <section class="col col-3">
+                      
+                    
+                    THS
+                    <label class="radio">
+                        <input type="radio" name="ths" value="normal" <?php if($record->ths=='normal') echo 'checked' ?> >
+                            <i></i>Normal</label>
+                    <label class="radio">
+                        <input type="radio"  name="ths" value="sospechoso" <?php if($record->ths=='sospechoso') echo 'checked' ?>  >
+                    <i></i>Sospechoso
+                    </label>
+                    <label class="input">
+                        <input type="text" name="ths_valor" value="<?php echo $record->ths_valor ?>" placeholder="valor"  >
+                            
+                    </label>
+														
+                    
+                    
+                </section>
+              
+              <section class="col col-3">
+                      
+                    
+                    17-OH
+                    <label class="radio">
+                        <input type="radio" name="oh17" value="normal" <?php if($record->oh17=='normal') echo 'checked' ?> >
+                            <i></i>Normal</label>
+                    <label class="radio">
+                        <input type="radio" name="oh17" value="sospechoso" <?php if($record->oh17=='sospechoso') echo 'checked' ?>  >
+                    <i></i>Sospechoso
+                    </label>
+                    <label class="input">
+                        <input type="text" name="oh17_valor" value="<?php echo $record->oh17_valor ?>" placeholder="valor"  >
+                            
+                    </label>
+														
+                    
+                    
+                </section>
+              <section class="col col-3">
+                      
+                    
+                    Gal
+                    <label class="radio">
+                        <input type="radio" name="gal" value="normal" <?php if($record->gal=='normal') echo 'checked' ?> >
+                            <i></i>Normal</label>
+                    <label class="radio">
+                        <input type="radio" name="gal" value="sospechoso" <?php if($record->gal=='sospechoso') echo 'checked' ?>  >
+                    <i></i>Sospechoso
+                    </label>
+                    <label class="input">
+                        <input type="text" name="gal_valor" value="<?php echo $record->gal_valor ?>" placeholder="valor"  >
+                            
+                    </label>
+														
+                    
+                    
+                </section>
+             
+              <section class="col col-3">
+                      
+                    
+                    PKU
+                    <label class="radio">
+                        <input type="radio" name="pku" value="normal" <?php if($record->pku=='normal') echo 'checked' ?> >
+                            <i></i>Normal</label>
+                    <label class="radio">
+                        <input type="radio" name="pku" value="sospechoso" <?php if($record->pku=='sospechoso') echo 'checked' ?>  >
+                    <i></i>Sospechoso
+                    </label>
+                    <label class="input">
+                        <input type="text" name="pku_valor" value="<?php echo $record->pku_valor ?>" placeholder="valor"  >
+                            
+                    </label>
+														
+                    
+                    
+                </section>
+              
+             <input type="hidden" name="estatus" value="completo" />
+         </div>  
+          
+                                                        
+     </fieldset>   
+        
    
                                                 
                                                 
@@ -492,16 +612,15 @@
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-9">
         <ul id="sparks" class="">
-                <li class="sparks-info">
-                    <input id="smart-mod-eg1" type="button" value="Regresar sin Guardar"  />
-                </li>
+               
+                
                 <li class="sparks-info">
                     <input type="button" class="save-form" value="Guardar"  />
                     
                 </li>
-                <li class="sparks-info">
-                    <input type="button" class="save-new" value="Guardar y Nuevo"  />
-                </li>
+                <!--li class="sparks-info">
+                    <input type="button" id="save-new" value="Guardar y Nuevo"  />
+                </li-->
                 <li class="sparks-info">
                     <input type="button" class="save-form-list" value="Guardar e ir al Listado"  />
                 </li>

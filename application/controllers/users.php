@@ -17,13 +17,13 @@ class users extends MY_Controller{
       
       
     }
-    function checkRol()
+   function checkRol()
     {
        $user_role = $this->phpsession->get('role');
-       echo "<h1>$user_role</h1>";
+      
        if (!in_array($user_role,  $this->roles))
        {
-           //redirect(site_url());
+           redirect(site_url('/home'));
        }
     }
     
@@ -98,17 +98,23 @@ class users extends MY_Controller{
     }
     function update($id = null)
     {
-        
+        $salt = 'abczyx';
         
         
         $t = new $this->Model($id);
        
+        $pass = $this->input->post('password');
+        unset($_POST['password']);
         
         foreach($_POST as $key =>$field){
            // echo "key is $key ".$field;
            // echo "<br>";
             $t->$key = $this->input->post($key);
         }
+        
+        if (!empty($pass))
+        $t->password=sha1($salt.$pass);    
+            
         $t->save();
        
         

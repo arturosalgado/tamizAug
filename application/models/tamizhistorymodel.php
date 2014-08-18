@@ -1,14 +1,11 @@
 <?php
 
 
-class RoleModel extends ParentModel
+class TamizHistoryModel extends ParentModel
 {
     
-    public  $table = 'roles';
+    public  $table = 'tamiz_history';
     public  $has_many = array('estadomodel');
-    public  $has_one = array('user');
-    
-    protected  $ViewPath = 'roles';
             
     function __construct($id = NULL) {
         parent::__construct($id);
@@ -256,7 +253,7 @@ class RoleModel extends ParentModel
              cp,
              telefono,
              tecnica,
-             CONCAT_WS(' ',users.paterno,users.materno,users.nombre) as responsable,
+             CONCAT_WS(' ',usuarios.paterno,usuarios.materno,usuarios.nombre) as responsable,
              estatus,
              malformacion,
              ths,
@@ -279,9 +276,9 @@ class RoleModel extends ParentModel
             
              FROM tamiz
              
-             LEFT JOIN users 
+             LEFT JOIN usuarios 
              ON 
-             users.id = responsable_id
+             usuarios.id = responsable_id
 
              ";
         $r = $this->db->query($q);
@@ -323,14 +320,14 @@ class RoleModel extends ParentModel
     
     function editLink($label = '')
     {
-        return site_url("{$this->viewPath()}/form/{$this->id}");
+        return site_url("tamiz/form/{$this->id}");
     }
     
     
     function newLink()
     {
         
-        return site_url("/users/form/");
+        return site_url("tamiz/form/");
         
     }
     
@@ -352,10 +349,16 @@ class RoleModel extends ParentModel
         return site_url('tamiz/search/');
     }
     
-    
-    function getFormUpdateAction()
+    function clone_me($t,$array)
     {
+        $this->tamiz_id = $t->id;
+        $this->nombre = $t->nombre;
         
-        return site_url("{$this->ViewPath}/update/{$this->id}");
+        foreach ($this->fields as $field )
+        {
+            if ($field=='id') continue;
+            $this->$field = $t->$field;
+        }
+        
     }
 }
