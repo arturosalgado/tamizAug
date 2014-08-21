@@ -47,7 +47,7 @@
                                 -->
                                 <header>
                                         <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                                        <h2>Column Filters </h2>
+                                        <h22></h22>
 
                                 </header>
 
@@ -101,10 +101,10 @@
                                                   
                                                     
                                                     <th>Nombre</th>
-                                                    <th data-hide="phone">Office</th>
-                                                    <th data-hide="phone">Age</th>
-                                                    <th data-hide="phone,tablet">Start date</th>
-                                                    <th data-hide="phone,tablet">Salary</th>
+                                                    <th data-hide="phone"></th>
+                                                    <th data-hide="phone"></th>
+                                                    <th data-hide="phone,tablet"></th>
+                                                    <th data-hide="phone,tablet"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -122,10 +122,10 @@
                                                             </a>
                                                         </td>
                                                     <td><?php echo $row->folio;?></td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2014/12/12</td>
-                                                    <td>$320,800</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
                                                     </tr>
                                                 <?php endforeach;?>
                                                 </tbody>

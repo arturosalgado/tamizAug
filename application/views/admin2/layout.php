@@ -851,7 +851,7 @@
 	
 			// START AND FINISH DATE
 			$('#startdate').datepicker({
-				dateFormat : 'dd.mm.yy',
+				dateFormat : 'dd/mm/yy',
 				prevText : '<i class="fa fa-chevron-left"></i>',
 				nextText : '<i class="fa fa-chevron-right"></i>',
 				onSelect : function(selectedDate) {
@@ -860,7 +860,7 @@
 			});
 			
 			$('#finishdate').datepicker({
-				dateFormat : 'dd.mm.yy',
+				dateFormat : 'dd/mm/yy',
 				prevText : '<i class="fa fa-chevron-left"></i>',
 				nextText : '<i class="fa fa-chevron-right"></i>',
 				onSelect : function(selectedDate) {

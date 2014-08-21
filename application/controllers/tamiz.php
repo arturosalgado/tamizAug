@@ -221,6 +221,7 @@ class tamiz extends MY_Controller{
     }
     function formatdate($date)
     {
+           
         list($d,$m,$y)= @split("/",$date);
         $insertDate  = date("Y-m-d",strtotime("$m/$d/$y"));
         return $insertDate;
