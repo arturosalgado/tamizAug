@@ -105,6 +105,19 @@ class tamiz extends MY_Controller{
              $t->where('folio',  $this->search_folio);   
             }
             
+            // IMPORTANT : check that the model for generating the excel has the same result 
+            
+            if(!empty($this->search_inicio))
+            {
+                $t->where('fechademuestra >=',  $this->search_inicio);
+            }
+            if(!empty($this->search_fin))
+            {
+                $t->where('fechademuestra <=',  $this->search_fin);
+            }
+            
+            
+            
             $t->stop_cache();
             $q =  $t->get_raw();
        
@@ -119,7 +132,9 @@ class tamiz extends MY_Controller{
            //echo $this->totalRecords=$t->result_count();
           
            $t->get($this->limit,$this->offset);    
-           //echo $this->totalRecords=$t->result_count();
+           
+           
+           //echo "[{$t->check_last_query()}]";
            
            $all = $t->all;
            $this->data['all']=$all;
@@ -234,6 +249,9 @@ class tamiz extends MY_Controller{
    
     function search()
     {
+        
+        
+        
         $this->search_name = $this->input->post("nombre");
         $this->search_folio = $this->input->post("folio");
         $this->search_inicio = $this->input->post("inicio");
@@ -245,8 +263,8 @@ class tamiz extends MY_Controller{
         $this->phpsession->set("tamiz_search_fin",$this->search_fin);
         
         //*prevent re-submit form notice */
-        redirect(site_url('tamiz/all'));
-        //$this->index();
+       redirect(site_url('tamiz/all'));
+        
     }
     
     function insert()
@@ -411,6 +429,21 @@ class tamiz extends MY_Controller{
         {
             $array[$k]= trim($value);
         }
+    }
+    
+    
+    function exportPDF()
+    {
+       
+            
+        $this->load->library('export');
+        $this->load->model('TamizModel');
+        
+        $sql = $this->TamizModel->myqueryfunction();
+        $this->export->setHeaders($this->TamizModel->getExcelHeaders());
+        $this->export->to_excel($sql, 'nameForFile'); 
+        
+    
     }
     
 }

@@ -37,7 +37,7 @@ class tamizhistory extends MY_Controller{
         $data['record']=$h;
         $h->where('tamiz_id',$this->tamiz_id);
         $all = $h->get()->all;
-        
+       
         $this->data['all']=$all;
         return  $this->load->view("{$this->theme}/tamizhistory/list_view",  $this->data,true);  
         

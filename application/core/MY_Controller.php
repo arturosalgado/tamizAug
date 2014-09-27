@@ -310,7 +310,7 @@ abstract class MY_Controller extends CI_Controller
                 $active = 'class = "active" ';
            }
             $li.='<li '.$active.'>
-                    <a href="'.site_url($child['url']).'"><i class="fa fa-plane"></i> '.$child['label'].'</a>
+                    <a href="'.site_url($child['url']).'"><i class="fa fa-table"></i> '.$child['label'].'</a>
 		  </li>';
        }
        

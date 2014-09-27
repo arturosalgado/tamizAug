@@ -55,6 +55,13 @@
                  var site_url = '<?php echo site_url() ?>';
                  var base_url = '<?php echo base_url() ?>';
                 </script>
+                
+                
+                <!-- custom css --->
+                <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $theme; ?>css/custom.css">
+
+                
+                
 	</head>
 	<body class="">
 		<!-- possible classes: minified, fixed-ribbon, fixed-header, fixed-width-->
@@ -64,7 +71,13 @@
 			<div id="logo-group">
 
 				<!-- PLACE YOUR LOGO HERE -->
-				<span id="logo"> <img src="<?php echo $theme; ?>img/logo.png" alt="SmartAdmin"> </span>
+				<span id="logo"> 
+                                    
+                                    <a href="<?php echo site_url(); ?>">   <img src="<?php echo $theme; ?>img/logo.png" alt="Hermes - Sintesys Global"> </a>
+                                
+                                </span>
+                                
+                                
 				<!-- END LOGO PLACEHOLDER -->
 
 				<!-- Note: The activity badge color changes when clicked and resets the number to 0
@@ -375,6 +388,17 @@
 		<script src="<?php echo $theme; ?>js/plugin/datatables/dataTables.bootstrap.min.js"></script>
 		<script src="<?php echo $theme; ?>js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
 
+                
+                
+                
+                
+                <script src="<?php echo $theme; ?>js/plugin/flot/jquery.flot.cust.min.js"></script>
+		<script src="<?php echo $theme; ?>js/plugin/flot/jquery.flot.resize.min.js"></script>
+		<script src="<?php echo $theme; ?>js/plugin/flot/jquery.flot.fillbetween.min.js"></script>
+		<script src="<?php echo $theme; ?>js/plugin/flot/jquery.flot.orderBar.min.js"></script>
+		<script src="<?php echo $theme; ?>js/plugin/flot/jquery.flot.pie.min.js"></script>
+		<script src="<?php echo $theme; ?>js/plugin/flot/jquery.flot.tooltip.min.js"></script>
+                
 		<script type="text/javascript">
 		
 		// DO NOT REMOVE : GLOBAL FUNCTIONS!
@@ -851,22 +875,43 @@
 	
 			// START AND FINISH DATE
 			$('#startdate').datepicker({
+                               
 				dateFormat : 'dd/mm/yy',
 				prevText : '<i class="fa fa-chevron-left"></i>',
-				nextText : '<i class="fa fa-chevron-right"></i>',
-				onSelect : function(selectedDate) {
-					$('#finishdate').datepicker('option', 'minDate', selectedDate);
-				}
+				nextText : '<i class="fa fa-chevron-right"></i>'
+				
+                                
 			});
 			
 			$('#finishdate').datepicker({
 				dateFormat : 'dd/mm/yy',
 				prevText : '<i class="fa fa-chevron-left"></i>',
-				nextText : '<i class="fa fa-chevron-right"></i>',
-				onSelect : function(selectedDate) {
-					$('#startdate').datepicker('option', 'maxDate', selectedDate);
-				}
+				nextText : '<i class="fa fa-chevron-right"></i>'
+				
 			});
+
+
+                        jQuery(function($){
+                        $.datepicker.regional['es'] = {
+                                closeText: 'Cerrar',
+                                prevText: '&#x3c;Ant',
+                                nextText: 'Sig&#x3e;',
+                                currentText: 'Hoy',
+                                monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+                                'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+                                monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+                                'Jul','Ago','Sep','Oct','Nov','Dic'],
+                                dayNames: ['Domingo','Lunes','Martes','Mi&eacute;rcoles','Jueves','Viernes','S&aacute;bado'],
+                                dayNamesShort: ['Dom','Lun','Mar','Mi&eacute;','Juv','Vie','S&aacute;b'],
+                                dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','S&aacute;'],
+                                weekHeader: 'Sm',
+                                dateFormat: 'dd/mm/yy',
+                                firstDay: 1,
+                                isRTL: false,
+                                showMonthAfterYear: false,
+                                yearSuffix: ''};
+                        $.datepicker.setDefaults($.datepicker.regional['es']);
+                });
 
                         ////////////
                         
@@ -889,13 +934,13 @@
                          
                          //alert('list')
                          $("#saveType").attr("value","save-new");
-                         $('#form').submit();
+                         $('#form-tamiz').submit();
                          
                      });       
                         
                      
             
-                    $(".reset").click(function(){
+                    $("#reset").click(function(){
                        $('#search-form').find(':input.form-control').each(function(){
                                 $(this).val('');
                         });
@@ -962,7 +1007,106 @@
                     }); 
               
                     
-                        
+                     /// home statistics 
+                     var $chrt_border_color = "#efefef";
+			var $chrt_grid_color = "#DDD"
+			var $chrt_main = "#E24913";
+			/* red       */
+			var $chrt_second = "#6595b4";
+			/* blue      */
+			var $chrt_third = "#FF9F01";
+			/* orange    */
+			var $chrt_fourth = "#7e9d3a";
+			/* green     */
+			var $chrt_fifth = "#BD362F";
+			/* dark red  */
+			var $chrt_mono = "#000";
+                     if ($("#site-stats").length) {
+
+					var pageviews = [[1, 75], [3, 87], [4, 93], [5, 127], [6, 116], [7, 137], [8, 135], [9, 130], [10, 167], [11, 169], [12, 179], [13, 185], [14, 176], [15, 180], [16, 174], [17, 193], [18, 186], [19, 177], [20, 153], [21, 149], [22, 130], [23, 100], [24, 50]];
+					var visitors = [[1, 65], [3, 50], [4, 73], [5, 100], [6, 95], [7, 103], [8, 111], [9, 97], [10, 125], [11, 100], [12, 95], [13, 141], [14, 126], [15, 131], [16, 146], [17, 158], [18, 160], [19, 151], [20, 125], [21, 110], [22, 100], [23, 85], [24, 37]];
+                                        var visitors1 = [[1, 10], [3, 2], [4, 73], [5, 100], [6, 95], [7, 103], [8, 111], [9, 97], [10, 125], [11, 100], [12, 95], [13, 141], [14, 126], [15, 131], [16, 146], [17, 158], [18, 160], [19, 151], [20, 125], [21, 110], [22, 100], [23, 85], [24, 37]];
+					var visitors2 = [[1, 10], [3, 2], [4, 73], [5, 100], [6, 95], [7, 103], [8, 111], [9, 97], [10, 40], [11, 100], [12, 95], [13, 30], [14, 126], [15, 20], [16, 146], [17, 158], [18, 160], [19, 151], [20, 125], [21, 110], [22, 100], [23, 85], [24, 37],[25, 37],[26, 37],[27, 37],[28, 37],[29, 37],[30, 8],[31, 2]];
+									
+        //console.log(pageviews)
+					var plot = $.plot($("#site-stats"), [{
+						data : pageviews,
+						label : "Your pageviews"
+					}, {
+						data : visitors,
+						label : "Site visitors"
+					},
+                                        {
+						data : visitors1,
+						label : "TH2"
+					}, 
+                                        {
+						data : visitors2,
+						label : "TH2"
+					} 
+        
+        ], {
+						series : {
+							lines : {
+								show : true,
+								lineWidth : 1,
+								fill : true,
+								fillColor : {
+									colors : [{
+										opacity : 0.1
+									}, {
+										opacity : 0.15
+									},
+                                                                            {
+										opacity : 0.20
+									},
+                                                                            
+                                                                        {
+										opacity : 0.25
+									}
+                        ]
+								}
+							},
+							points : {
+								show : true
+							},
+							shadowSize : 0
+						},
+						xaxis : {
+							mode : "time",
+							tickLength : 1
+						},
+
+						yaxes : [{
+							min : 0,
+							tickLength : 2
+						}],
+						grid : {
+							hoverable : true,
+							clickable : true,
+							tickColor : $chrt_border_color,
+							borderWidth : 0,
+							borderColor : $chrt_border_color,
+						},
+						tooltip : true,
+						tooltipOpts : {
+							content : "%s for <b>%x:00 hrs</b> was %y",
+							dateFormat : "%y-%0m-%0d",
+							defaultTheme : false
+						},
+						colors : [$chrt_main, $chrt_second],
+						xaxis : {
+							ticks : 15,
+							tickDecimals : 0
+						},
+						yaxis : {
+							ticks : 15,
+							tickDecimals : 0
+						},
+					});
+
+				}
+                     
 		})
 
 		</script>

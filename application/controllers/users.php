@@ -98,6 +98,24 @@ class users extends MY_Controller{
     }
     function update($id = null)
     {
+        
+        if (empty($id))// new record, see if email is busy
+        {
+            
+            $email = $this->input->post('email');
+            $u1 = new UserModel();
+            $u1->where('email',$email)->get(1);
+            if ($u1->result_count())
+            {
+                $this->session->set_flash("new_user_error","El correo electronico ya esta registrado");
+            }
+            
+        }
+        
+        
+        
+        
+        
         $salt = 'abczyx';
         
         

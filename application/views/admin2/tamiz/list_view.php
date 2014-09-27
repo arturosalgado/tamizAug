@@ -9,7 +9,16 @@
                         </span>
                 </h1>
         </div>
-       <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+    
+        <div class="col-xs-6 col-sm-2 col-md-2 col-lg-4">
+        <ul id="sparks" class="">
+                <li class="sparks-info">
+                    <a href="<?php echo site_url('/tamiz/exportPDF/'); ?>" class="btn btn-default">Exportar a Excel</a>
+                </li>
+               
+        </ul>
+	</div>
+       <div class="col-xs-6 col-sm-2 col-md-2 col-lg-4">
         <ul id="sparks" class="">
                 <li class="sparks-info">
                     <a href="<?php echo $record->newLink(); ?>" class="btn btn-default">Crear Nuevo Registro </a>
@@ -75,12 +84,12 @@
             <input value="<?php echo $search_folio; ?>" name="folio" style="display: block;width: 160px;margin-right:10px;float:left;" type="text" class="form-control" placeholder="Filtrar por folio" />
             <input value="<?php echo $search_name; ?>" name="nombre"style="display: block;width: 300px;margin-right:10px;float:left;" type="text" class="form-control" placeholder="Filtrar por nombre" />
             
-            <input value="<?php echo $search_inicio; ?>" name="inicio" style="margin-right: 0px;display: block;width: 200px;float:left;"  id="dateselect_filter" type="text" placeholder="Desde" class="form-control datepicker" data-dateformat="yy/mm/dd">
+            <input value="<?php echo $search_inicio; ?>" name="inicio" style="margin-right: 0px;display: block;width: 200px;float:left;"  id="dateselect_filter" type="text" placeholder="Desde" class="form-control datepicker" data-dateformat="yy-mm-dd" >
           
             <label style="margin-right:0px;display: block;top:-4px;left:-30px;float:left;"for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Filter Date"></label>                
             
              
-            <input value="<?php echo $search_fin; ?>"name="fin" style="margin-right: 0px;display: block;width: 200px;float:left;"  id="dateselect_filter1" type="text" placeholder="Hasta" class="form-control datepicker" data-dateformat="yy/mm/dd">
+            <input value="<?php echo $search_fin; ?>"name="fin" style="margin-right: 0px;display: block;width: 200px;float:left;"  id="dateselect_filter1" type="text" placeholder="Hasta" class="form-control datepicker" data-dateformat="yy-mm-dd" >
           
             
             <label style="top:-4px;left:-30px;display: block;float:left;"for="dateselect_filter1" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Filter Date"></label>                
@@ -116,19 +125,19 @@
                                                 <tbody>
                                                 <?php foreach ($all as $row):?>
                                                     <tr>
-                                                        <td style="width:20px!important" >
-                                                            <a href="<?php echo $row->editLink() ?>">
+                                                        <td align="right" style="width:20px!important" >
+                                                            <a style="display: block;" href="<?php echo $row->editLink() ?>">
                                                             <?php echo $row->id; ?>
                                                             </a>
                                                         </td>
-                                                        <td >
-                                                            <a href="<?php echo $row->editLink() ?>">
+                                                        <td align="right">
+                                                            <a style="display: block;" href="<?php echo $row->editLink() ?>">
                                                             <?php echo $row->folio; ?>
                                                             </a>
                                                         </td>
                                                    
                                                         <td >
-                                                            <a href="<?php echo $row->editLink() ?>">
+                                                            <a style="display: block;"href="<?php echo $row->editLink() ?>">
                                                                 <?php echo $row->apellido_paterno ." ".$row->apellido_materno." ".$row->nombre ?>
                                                             </a>
                                                         </td>

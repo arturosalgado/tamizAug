@@ -223,6 +223,19 @@ class TamizModel extends ParentModel
     
     function myqueryfunction()
     {
+        $iniQuery='';
+        $ini = $this->CI->phpsession->get("tamiz_search_inicio");
+        
+        
+        $finQuery='';
+        $fin = $this->CI->phpsession->get("tamiz_search_fin");
+        
+        if (!empty($ini))
+        $iniQuery = " AND `fechademuestra` >= '$ini' ";
+        
+        if (!empty($fin))
+        $finQuery = " AND `fechademuestra` <= '$fin' ";
+        
         
         $q = "Select 
              tamiz.id as id,   
@@ -279,6 +292,9 @@ class TamizModel extends ParentModel
              LEFT JOIN usuarios 
              ON 
              usuarios.id = responsable_id
+             WHERE  1=1 
+             $iniQuery
+             $finQuery
 
              ";
         $r = $this->db->query($q);

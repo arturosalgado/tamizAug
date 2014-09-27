@@ -4,17 +4,17 @@
 			
 			<!-- PAGE HEADER -->
 			<i class="fa-fw fa fa-pencil-square-o"></i> 
-				Forms
+				Tamiz
 			<span>>  
-				Form Layouts
+				Formulario
 			</span>
 		</h1>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-9">
         <ul id="sparks" class="">
-                <li class="sparks-info">
+<!--                <li class="sparks-info">
                     <input id="smart-mod-eg1" type="button" value="Regresar sin Guardar"  />
-                </li>
+                </li>-->
                 <li class="sparks-info">
                     <input type="button" class="save-form" value="Guardar"  />
                     
@@ -226,13 +226,23 @@
                 </section>
      </div>  
             <div class="row">
-                <section class="col col-2">
+<!--                <section class="col col-2">
                        Toma de muestra
                         <label class="input">
-                            <input type="text" name="fechademuestra" value="<?php echo ($record->fechademuestra==null)?date('d/m/Y'):$record->getFechademuestra(); ?>"  placeholder="dd/mm/aaaa"  >
+                            <input type="text" id="enddate" name="fechademuestra" value="<?php echo ($record->fechademuestra==null)?date('d/m/Y'):$record->getFechademuestra(); ?>"  placeholder="dd/mm/aaaa"  >
                         </label>
+                </section>-->
+              <section class="col col-2">
+                       Toma de Muestra
+                        
+
+                        <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                <input type="text" name="fechademuestra"  value="<?php echo ($record->fechademuestra==null)?date('d/m/Y'):$record->getFechademuestra(); ?>" id="finishdate" placeholder=""  >
+                        </label>
+
+                       
+                       
                 </section>
-             
                  <section class="col col-1">
                        Hora 
                         <label class="input">
@@ -340,11 +350,11 @@
                 </section>
                 <section class="col col-1">
                         Gesta
-                        <label class="select">
+                        <label class="input">
                                
-                           <select name="gesta">
-                                 <?php echo  $record->listGesta($record->gesta) ?>
-                           </select>     
+                           
+                            <input name="gesta" value="<?php echo $record->gesta;  ?>" max="25" min="1" type="number" step="1"/>
+                             
                         </label>
                 </section>
             
@@ -492,9 +502,9 @@
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-9">
         <ul id="sparks" class="">
-                <li class="sparks-info">
+<!--                <li class="sparks-info">
                     <input id="smart-mod-eg1" type="button" value="Regresar sin Guardar"  />
-                </li>
+                </li>-->
                 <li class="sparks-info">
                     <input type="button" class="save-form" value="Guardar"  />
                     

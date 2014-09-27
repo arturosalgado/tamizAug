@@ -87,6 +87,7 @@
                                   name="paterno"
                                   id="unidad_clinica"
                                   required="required"
+                                  
                                   title='Se requiere esta información'
                                   value="<?php echo $record->paterno  ?>"
                                  placeholder="" type="text" 
@@ -135,6 +136,7 @@
                       <input class="form-control ui-autocomplete-input" 
                              name="email"
                              id="jurisdiccion"
+                             autocomplete="off"
                                required="required"
                                   title='Se requiere esta información'
                              value="<?php echo $record->email  ?>"
@@ -156,6 +158,7 @@
                            
                       <input class="form-control ui-autocomplete-input" 
                              name="password"
+                             
                              type="password"
                              id="jurisdiccion"
                              title='Se requiere esta información'

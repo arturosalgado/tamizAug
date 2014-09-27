@@ -25,69 +25,61 @@
 <!-- end row -->
 
 <!-- row -->
+
 <div class="row">
 
-        <div class="col-sm-12">
+						<!-- NEW WIDGET START -->
+						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-                <div class="well">
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget" id="wid-id-7" data-widget-editbutton="false">
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
-                        <table class="table table-striped table-forum">
-                                <thead>
-                                        <tr>
-                                                <th colspan="2"></th>
-                                                <th class="text-center hidden-xs hidden-sm" style="width: 100px;"></th>
-                                                <th class="text-center hidden-xs hidden-sm" style="width: 100px;"></th>
-                                                <th class="hidden-xs hidden-sm" style="width: 200px;"></th>
-                                        </tr>
-                                </thead>
-                                <tbody>
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
 
-                                        <!-- TR -->
-                                        <tr>
-                                                <td class="text-center" style="width: 40px;"><i class="fa fa-globe fa-2x text-muted"></i></td>
-                                                <td>
-                                                        <h4><a href="forum-topic.html">
-                                                                
-                                                        </a>
-                                                                <small></small>
-                                                        </h4>
-                                                </td>
-                                                <td class="text-center hidden-xs hidden-sm">
-                                                        <a href="javascript:void(0);">431</a>
-                                                </td>
-                                                <td class="text-center hidden-xs hidden-sm">
-                                                        <a href="javascript:void(0);">1342</a>
-                                                </td>
-                                                <td class="hidden-xs hidden-sm">by 
-                                                        <a href="javascript:void(0);">Admin</a>
-                                                        <br>
-                                                        <small><i>January 1, 2014</i></small>
-                                                </td>
-                                        </tr>
-                                        <!-- end TR -->
+								-->
+								<header>
+									<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+                                                                        <h2>Estadisticas <select><option>Agosto 2014</option></select></h2>
 
-                                        <!-- TR -->
-                                        
-                                        <!-- end TR -->
+								</header>
 
-                                        <!-- TR -->
-                                        
-                                        <!-- end TR -->
+								<!-- widget div-->
+								<div>
 
-                                </tbody>
-                        </table>
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
 
-                        
+									</div>
+									<!-- end widget edit box -->
 
+									<!-- widget content -->
+									<div class="widget-body no-padding">
 
-                       
+										<div id="site-stats" class="chart has-legend"></div>
 
+									</div>
+									<!-- end widget content -->
 
-                </div>
-        </div>
+								</div>
+								<!-- end widget div -->
 
-</div>
+							</div>
+							<!-- end widget -->
 
+						</article>
+						<!-- WIDGET END -->
+
+					</div>
 <!-- end row -->
 
 <!-- row -->
